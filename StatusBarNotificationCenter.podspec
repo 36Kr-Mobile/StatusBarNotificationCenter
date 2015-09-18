@@ -1,40 +1,15 @@
-#
-# Be sure to run `pod lib lint StatusBarNotificationCenter.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
-  s.name             = "StatusBarNotificationCenter"
-  s.version          = "0.1.0"
-  s.summary          = "A short description of StatusBarNotificationCenter."
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
-  s.description      = <<-DESC
-                       DESC
-
-  s.homepage         = "https://github.com/<GITHUB_USERNAME>/StatusBarNotificationCenter"
-  # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
-  s.license          = 'MIT'
-  s.author           = { "Shannon Wu" => "inatu@icloud.com" }
-  s.source           = { :git => "https://github.com/<GITHUB_USERNAME>/StatusBarNotificationCenter.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
-
-  s.platform     = :ios, '8.0'
-  s.requires_arc = true
-
-  s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'StatusBarNotificationCenter' => ['Pod/Assets/*.png']
-  }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+s.name			= "StatusBarNotificationCenter"
+s.version		= "1.0.0"
+s.summary            = "a library that can be used in your application to show customised status bar notification."
+s.description         = "During out software development, we want to find a library that can show notification from the status bar,  This project learned many thought from  the popular CWStatusBarNotificationlibrary, but with much cleaner code implementation(in my own option) and fully written in Swift 2.0,  and more extendable, and also it comes with more customisation options, and support multitasking and split view comes with iOS9+ . You can check it if you want to find a custom status bar notification library."
+s.homepage         = "https://github.com/36Kr-Mobile/StatusBarNotificationCenter.git"
+s.screenshots      = "https://raw.github.com/36Kr-Mobile/StatusBarNotificationCenter/master/screenshots/screenshot.png"
+s.license              = 'MIT'
+s.author               = { "Shannon Wu" => "inatu@icloud.com" }
+s.source               = { :git => "https://github.com/36Kr-Mobile/StatusBarNotificationCenter.git", :tag => s.version.to_s }
+s.platform     = :ios, '8.0'
+s.requires_arc = true
+s.source_files = 'Pod/**/*'
+s.frameworks = 'UIKit'
 end

@@ -1,0 +1,14 @@
+PODS:
+  - StatusBarNotificationCenter (0.1.0)
+
+DEPENDENCIES:
+  - StatusBarNotificationCenter (from `../`)
+
+EXTERNAL SOURCES:
+  StatusBarNotificationCenter:
+    :path: ../
+
+SPEC CHECKSUMS:
+  StatusBarNotificationCenter: e7d8055b5086352ecc09eea55d40975685ce85de
+
+COCOAPODS: 0.39.0.beta.4
