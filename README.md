@@ -5,17 +5,20 @@
 [![Platform](https://img.shields.io/cocoapods/p/StatusBarNotificationCenter.svg?style=flat)](http://cocoapods.org/pods/StatusBarNotificationCenter)
 
 ![screenshot](screenshots/screenshot.png)
-![screenshot2](screenshots/screenshot2.png)
-![screenshot3](screenshots/screenshot3.png)
+
 You may also want to check this short  [Youtube Video] (https://youtu.be/Qk2vhrBAyps?list=PLy5xoZi6fpzJ0z2xtlqL9Hz86IrpZuksG)to see what it can generally do
+
+You can also check this short [Youtube Video] (https://youtu.be/vtMWcWVtxZ8)to learn more about its implementation detail
 
 `StatusBarNotificationCenter` is a library that can be used in your application to show customised status bar notification.
 
 **NOTE:**During out software development, we want to find a library that can show notification from the status bar,  This project learned many thought from  the popular [`CWStatusBarNotification`](https://github.com/cezarywojcik/CWStatusBarNotification)  library, but with much cleaner code implementation(in my own option) and fully written in **Swift 2.0**,  and more extendable, and also it comes with more customisation options, and support multitasking and split view comes with iOS9+ . You can check it if you want to find a custom status bar notification library.
 
-## Usage
+## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+This example is best run with an iPad air or iPad Pro, and you can test the split view
 
 ##Requirements
 Because the demonstration code is written with UIStackView, so you need Xcode 7.0+ and iOS 9.0+ to run the demo, But I think this library can be used with devices with system version 7.0+, because the API is rather basic, and you can modify the source code with little effort to accompany with your minimum deployment target.
@@ -25,7 +28,7 @@ Works on iPhone and iPad
 ## Installation
 
 StatusBarNotificationCenter is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+it, simply add the following line to your Podfile, becasue this is written in Swift 2.0, you may also need to insert `use_frameworks!` in your Podfile:
 
 ```ruby
 pod "StatusBarNotificationCenter"
