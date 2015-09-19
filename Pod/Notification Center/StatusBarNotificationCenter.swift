@@ -97,7 +97,7 @@ public class StatusBarNotificationCenter: NSObject {
     
     //MARK: Notification View
     var notificationViewWidth: CGFloat {
-        return notificationWindow.bounds.width
+        return baseWindow.bounds.width
     }
     
     var notificationViewHeight: CGFloat {
