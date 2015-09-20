@@ -28,7 +28,7 @@ public class StatusBarNotificationCenter: NSObject {
     var snapshotView: UIView?
         
     //MARK: Message Label
-    var messageLabel: SBNScrollLabel?
+    var messageLabel: SBNScrollLabel!
     var messageLabelScrollable: Bool {
         if let notificationLabelConfiguration = notificationLabelConfiguration {
             return notificationLabelConfiguration.scrollabel
@@ -205,7 +205,7 @@ public class StatusBarNotificationCenter: NSObject {
     
     //MARK: - Notification
     var notificationCenterConfiguration: SBNNotificationCenterConfiguration!
-    var notificationLabelConfiguration: SBNNotificationLabelConfiguration?
+    var notificationLabelConfiguration: SBNNotificationLabelConfiguration!
 
     var isShowing = false
     var isDismissing = false

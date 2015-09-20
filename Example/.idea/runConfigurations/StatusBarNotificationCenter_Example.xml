@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="StatusBarNotificationCenter-Example" type="AppleRunConfiguration" factoryName="Application" WORKING_DIR="" PASS_PARENT_ENVS="FALSE" PROJECT_NAME="StatusBarNotificationCenter" TARGET_NAME="StatusBarNotificationCenter_Example" CONFIG_NAME="Debug" SCHEME_NAME="StatusBarNotificationCenter-Example" RUN_TARGET_PROJECT_NAME="StatusBarNotificationCenter" RUN_TARGET_NAME="StatusBarNotificationCenter_Example" MAKE_ACTIVE="TRUE" WAIT_FOR="FALSE">
+    <envs />
+    <EXTENSION ID="org.jetbrains.appcode.reveal.RevealRunConfigurationExtension">
+      <REVEAL_SETTINGS autoInject="false" autoInstall="true" askToEnableAutoInstall="true" />
+    </EXTENSION>
+    <method />
+  </configuration>
+</component>

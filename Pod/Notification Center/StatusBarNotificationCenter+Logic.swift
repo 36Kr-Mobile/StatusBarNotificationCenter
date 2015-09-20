@@ -89,19 +89,18 @@ extension StatusBarNotificationCenter {
             UIView.animateWithDuration(animateInLength, animations: { () -> Void in
                 self.animateInFrameChange()
                 }, completion: { (finished) -> Void in
-                    if let delayInSeconds = self.messageLabel?.scrollTime {
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
-                            if completion != nil {
-                                completion!()
-                            }
-                        })
-                    }
+                    let delayInSeconds = self.messageLabel.scrollTime
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                        if completion != nil {
+                            completion!()
+                        }
+                    })
             })
-        } else {
-            dismissNotificationWithCompletion({ () -> Void in
-                self.showStatusBarNotificationWithMessage(message, completion: completion)
-            })
-        }
+        } //else {
+//            dismissNotificationWithCompletion({ () -> Void in
+//                self.showStatusBarNotificationWithMessage(message, completion: completion)
+//            })
+//        }
     }
     
     func showStatusBarNotificationWithMessage(message: String?, forDuration duration: NSTimeInterval) {
@@ -132,11 +131,11 @@ extension StatusBarNotificationCenter {
                 }, completion: { (finished) -> Void in
                     completion()
             })
-        } else {
-            dismissNotificationWithCompletion({ () -> Void in
-                self.showStatusBarNotificationWithView(view, completion: completion)
-            })
-        }
+        } //else {
+//            dismissNotificationWithCompletion({ () -> Void in
+//                self.showStatusBarNotificationWithView(view, completion: completion)
+//            })
+//        }
     }
     
     func showStatusBarNotificationWithView(view: UIView, forDuration duration: NSTimeInterval) {

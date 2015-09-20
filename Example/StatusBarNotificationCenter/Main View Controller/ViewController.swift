@@ -27,7 +27,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         updateDurationLabel()
-        notificationTextField.text = "The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!The world is waiting for your ideas. Are you ready? Then let's get started building your business!"
+        notificationTextField.text = "Hello, Programmer"
     }
     
     @IBAction func durationValueChanged(sender: UISlider) {
@@ -50,18 +50,23 @@ class ViewController: UIViewController {
         notificationCenterConfiguration.animateOutLength = 0.75
         notificationCenterConfiguration.style = StatusBarNotificationCenter.Style(rawValue: segNotificationType.selectedSegmentIndex)!
         
-        if isCustomView.on {
-            let nibContents = NSBundle.mainBundle().loadNibNamed("NotificationView", owner: self, options: nil)
-            let view = nibContents.first as! UIView
-            view.frame = CGRectMake(100, 100, 300, 300)
-            StatusBarNotificationCenter.showStatusBarNotificationWithView(view, forDuration: NSTimeInterval(durationSlider.value), withNotificationCenterConfiguration: notificationCenterConfiguration)
-        } else {
-            var notificationLabelConfiguration = SBNNotificationLabelConfiguration()
-            notificationLabelConfiguration.font = UIFont.systemFontOfSize(14.0)
-            notificationLabelConfiguration.multiline = multiLine.on
-            notificationLabelConfiguration.backgroundColor = view.tintColor
-            notificationLabelConfiguration.textColor = UIColor.blackColor()
-            StatusBarNotificationCenter.showStatusBarNotificationWithMessage(notificationTextField.text, forDuration: NSTimeInterval(durationSlider.value), withNotificationCenterConfiguration: notificationCenterConfiguration, andNotificationLabelConfiguration: notificationLabelConfiguration)
+        for i in 1...10 {
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(Double(i) * drand48() * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                if self.isCustomView.on {
+                    let nibContents = NSBundle.mainBundle().loadNibNamed("NotificationView", owner: self, options: nil)
+                    let view = nibContents.first as! UIView
+                    view.frame = CGRectMake(100, 100, 300, 300)
+                    StatusBarNotificationCenter.showStatusBarNotificationWithView(view, forDuration: NSTimeInterval(self.durationSlider.value), withNotificationCenterConfiguration: notificationCenterConfiguration)
+                } else {
+                    var notificationLabelConfiguration = SBNNotificationLabelConfiguration()
+                    notificationLabelConfiguration.font = UIFont.systemFontOfSize(14.0)
+                    notificationLabelConfiguration.multiline = self.multiLine.on
+                    notificationLabelConfiguration.backgroundColor = self.view.tintColor
+                    notificationLabelConfiguration.textColor = UIColor.blackColor()
+                    StatusBarNotificationCenter.showStatusBarNotificationWithMessage(self.notificationTextField.text! + "\(i)", forDuration: NSTimeInterval(self.durationSlider.value), withNotificationCenterConfiguration: notificationCenterConfiguration, andNotificationLabelConfiguration: notificationLabelConfiguration)
+                }
+
+            })
         }
     }
         
