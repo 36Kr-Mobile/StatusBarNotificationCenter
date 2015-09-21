@@ -92,4 +92,37 @@ extension StatusBarNotificationCenter {
         */
         case Label
     }
+    
+    /**
+    *  This is the base element of the notification queue
+    */
+    struct Notification {
+        /// This is the notification center configuration object
+        let notificationCenterConfiguration: SBNNotificationCenterConfiguration
+        /// This the notification label configuration object
+        let notificationLabelConfiguration: SBNNotificationLabelConfiguration?
+        /// This is the duration of the notification
+        let duration: NSTimeInterval?
+        /// The view source of the notification
+        let viewSource: ViewSource
+        /// The completion handler
+        let completionHandler: (Void -> Void)? = nil
+        
+        /**
+        Init a new notification object
+        
+        - parameter notificationCenterConfiguration: This is the notification center configuration object
+        - parameter viewSource:                      The view source of the notification
+        - parameter notificationLabelConfiguration:  This the notification label configuration object
+        - parameter duration:                        This is the duration of the notification
+
+        - returns: a newly initialtiated notification
+        */
+        init(notificationCenterConfiguration: SBNNotificationCenterConfiguration, viewSource: ViewSource, notificationLabelConfiguration:SBNNotificationLabelConfiguration? = nil, duration: NSTimeInterval? = nil) {
+            self.notificationCenterConfiguration = notificationCenterConfiguration
+            self.notificationLabelConfiguration = notificationLabelConfiguration
+            self.duration = duration
+            self.viewSource = viewSource
+        }
+    }
 }

@@ -193,7 +193,7 @@ public class StatusBarNotificationCenter: NSObject {
         }
     }
     
-    //MARK: - UIWindow
+    //MARK: - Window
     let notificationWindow = SBNWindow(frame: UIScreen.mainScreen().bounds)
     var baseWindow: UIWindow {
         if let notificationCenterConfiguration = notificationCenterConfiguration {
@@ -230,4 +230,12 @@ public class StatusBarNotificationCenter: NSObject {
             fatalError("Cannot reach this branch")
         }
     }
+    
+    //MARK: - Notification Queue Management
+    /// A notification array
+    var notifications = [Notification]()
+    /// Create a notification Queue to track the notifications
+    static let notificationQ = dispatch_queue_create("notificationQueue", DISPATCH_QUEUE_SERIAL)
+    /// Create a semaphore to show the notification in a one-after one basis
+    let notificationSemaphore = dispatch_semaphore_create(1)
 }
