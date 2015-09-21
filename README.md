@@ -21,12 +21,12 @@ You can also check this short [Youtube Video] (https://youtu.be/vtMWcWVtxZ8) to 
 4. Fullly documented
 
 ## Coming Features
--[] Let the users interac with the app during the notification is showing
--[] Some small showing bugs
--[] More animation style
+1. Let the users interac with the app during the notification is showing
+2. Some small showing bugs
+3. More animation style
 
 ## A few words
-This library is just a center class with a window and a view controller, and the center maintains an notification queue, I think our main aim is to build a stable and maintainable architecture, you can easiy add your custom view to this library, if you have something great to share, please open an issue or submit a pull request, thanks for your support.
+This library is just a center class with a window and a view controller, and the center maintains an notification queue, I think our main aim is to build a stable and maintainable architecture, I want to add as many functionality as well, but I really like simple architecture, so there has to be some balance, and I am a programmer just for a few months, so there maybe some thing that maybe not approprite, if you have some advice, please contant me with my email, you can easiy add your custom view to this library, if you have something great to share, please open an issue or submit a pull request, thanks for your support.
 
 ## Example
 
