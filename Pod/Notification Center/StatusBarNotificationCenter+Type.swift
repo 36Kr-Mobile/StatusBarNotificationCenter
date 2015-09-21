@@ -105,9 +105,14 @@ extension StatusBarNotificationCenter {
         let duration: NSTimeInterval?
         /// The view source of the notification
         let viewSource: ViewSource
-        /// The completion handler
-        let completionHandler: (Void -> Void)? = nil
-        
+        /// The view of the notification, if the view  source is a custom view
+        let view: UIView!
+        /// The completion handler to be called when the show process is done
+        let completionHandler: (Void -> Void)?
+        /// The message of the notification, if the view  source is a label
+        let message: String!
+
+      
         /**
         Init a new notification object
         
@@ -115,14 +120,18 @@ extension StatusBarNotificationCenter {
         - parameter viewSource:                      The view source of the notification
         - parameter notificationLabelConfiguration:  This the notification label configuration object
         - parameter duration:                        This is the duration of the notification
+        - parameter completionHandler:               The completion handler to be called when the show process is done
 
         - returns: a newly initialtiated notification
         */
-        init(notificationCenterConfiguration: SBNNotificationCenterConfiguration, viewSource: ViewSource, notificationLabelConfiguration:SBNNotificationLabelConfiguration? = nil, duration: NSTimeInterval? = nil) {
+      init(view: UIView?, message: String?, notificationCenterConfiguration: SBNNotificationCenterConfiguration, viewSource: ViewSource, notificationLabelConfiguration:SBNNotificationLabelConfiguration?, duration: NSTimeInterval?, completionHandler: (Void -> Void)?) {
+            self.view = view
+            self.message = message
             self.notificationCenterConfiguration = notificationCenterConfiguration
             self.notificationLabelConfiguration = notificationLabelConfiguration
             self.duration = duration
             self.viewSource = viewSource
+            self.completionHandler = completionHandler
         }
-    }
+  }
 }
