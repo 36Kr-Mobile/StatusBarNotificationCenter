@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/cocoapods/l/StatusBarNotificationCenter.svg?style=flat)](http://cocoapods.org/pods/StatusBarNotificationCenter)
 [![Platform](https://img.shields.io/cocoapods/p/StatusBarNotificationCenter.svg?style=flat)](http://cocoapods.org/pods/StatusBarNotificationCenter)
 
-![screenshot](screenshots/screenshot.png)
+![screenshot](screenshots/screenshoot.gif)
 
 You may also want to check this short  [Youtube Video] (https://youtu.be/Qk2vhrBAyps?list=PLy5xoZi6fpzJ0z2xtlqL9Hz86IrpZuksG) to see what it can generally do
 

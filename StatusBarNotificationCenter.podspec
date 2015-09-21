@@ -10,7 +10,7 @@ s.description		  = <<-DESC
 					   2. Support Concurrency
 					   3. Highly customizable
                 	   4. Simple architecture
-                       ![screenshot](screenshots/screenshot.png)
+                       ![screenshot](screenshots/screenshoot.gif)
                        DESC
 s.homepage         = "https://github.com/36Kr-Mobile/StatusBarNotificationCenter.git"
 s.license              = 'MIT'
