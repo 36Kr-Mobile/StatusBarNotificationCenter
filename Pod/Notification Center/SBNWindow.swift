@@ -13,18 +13,23 @@ class SBNWindow: UIWindow {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         backgroundColor = UIColor.clearColor()
         userInteractionEnabled = true
+        hidden = true
         windowLevel = UIWindowLevelStatusBar
+        rootViewController = SBNViewController()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configureWindowWithBounds(bounds: CGRect) {
-        rootViewController = SBNViewController()
-        rootViewController?.view.clipsToBounds = true
-        rootViewController?.view.bounds = bounds
+    func resetRootViewController() {
+      if let rootViewController = rootViewController as? SBNViewController {
+        for view in rootViewController.view.subviews {
+          view.removeFromSuperview()
+        }
+      }
     }
 }

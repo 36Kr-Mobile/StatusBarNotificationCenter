@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StatusBarNotificationCenter
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

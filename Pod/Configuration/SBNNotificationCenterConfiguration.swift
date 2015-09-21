@@ -34,7 +34,7 @@ public struct SBNNotificationCenterConfiguration {
     public var statusBarIsHidden: Bool = false
     /// The height of the navigation bar, default to 44.0 points
     public var navigationBarHeight: CGFloat = 44.0
-    
+  
     /**
     Initilizer
     
