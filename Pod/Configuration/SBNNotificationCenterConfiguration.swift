@@ -34,8 +34,6 @@ public struct SBNNotificationCenterConfiguration {
     public var statusBarIsHidden: Bool = false
     /// The height of the navigation bar, default to 44.0 points
     public var navigationBarHeight: CGFloat = 44.0
-    /// If the notification queue has multiple notifications to be shown, set this property to true will only show the last notification
-    public var showLatestNotificationOnly = false
   
     /**
     Initilizer

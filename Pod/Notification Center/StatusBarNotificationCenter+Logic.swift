@@ -67,13 +67,10 @@ extension StatusBarNotificationCenter {
     - parameter notification: the notification to be processed
     */
     func processNotification(notification: Notification) {
-        dispatch_async(notificationQ) { () -> Void in
-            if notification.notificationCenterConfiguration.showLatestNotificationOnly {
-                StatusBarNotificationCenter.center.notifications = []
-            }
-            StatusBarNotificationCenter.center.notifications.append(notification)
-            StatusBarNotificationCenter.center.showNotification()
-        }
+      dispatch_async(notificationQ) { () -> Void in
+        StatusBarNotificationCenter.center.notifications.append(notification)
+        StatusBarNotificationCenter.center.showNotification()
+      }
     }
   
     /**
@@ -106,7 +103,9 @@ extension StatusBarNotificationCenter {
                             self.showStatusBarNotificationWithMessage(currentNotification.message, completion: currentNotification.completionHandler)
                         }
                     }
-                }
+              } else {
+                return
+              }
             })
         }
     }
