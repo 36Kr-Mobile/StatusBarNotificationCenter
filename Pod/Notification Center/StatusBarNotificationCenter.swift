@@ -180,7 +180,7 @@ public class StatusBarNotificationCenter: NSObject {
     }
     var animateOutDirection: AnimationDirection {
         if let notificationCenterConfiguration = notificationCenterConfiguration {
-            return notificationCenterConfiguration.animateInDirection
+            return notificationCenterConfiguration.animateOutDirection
         } else {
             fatalError("Cannot reach this branch")
         }
