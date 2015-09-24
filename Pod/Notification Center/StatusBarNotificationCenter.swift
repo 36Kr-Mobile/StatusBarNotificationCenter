@@ -17,7 +17,7 @@ public class StatusBarNotificationCenter: NSObject {
     }
     
     /// The single status bar notification center
-    public class var center: StatusBarNotificationCenter {
+    class var center: StatusBarNotificationCenter {
         struct SingletonWrapper {
             static let singleton = StatusBarNotificationCenter()
         }
