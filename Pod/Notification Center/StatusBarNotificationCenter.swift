@@ -207,8 +207,6 @@ public class StatusBarNotificationCenter: NSObject {
     var notificationCenterConfiguration: SBNNotificationCenterConfiguration!
     var notificationLabelConfiguration: SBNNotificationLabelConfiguration!
 
-    var isShowing = false
-    var isDismissing = false
     var dismissible: Bool {
         if let notificationCenterConfiguration = notificationCenterConfiguration {
             return notificationCenterConfiguration.dismissible

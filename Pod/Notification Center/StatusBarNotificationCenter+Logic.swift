@@ -111,31 +111,29 @@ extension StatusBarNotificationCenter {
     }
   
     func showStatusBarNotificationWithMessage(message: String?,completion: (() -> Void)?) {
-        if !self.isShowing {
-          self.isShowing = true
-          
-          self.createMessageLabelWithMessage(message)
-          self.createSnapshotView()
-          
-          if let messageLabel = self.messageLabel {
+        
+        self.createMessageLabelWithMessage(message)
+        self.createSnapshotView()
+        
+        if let messageLabel = self.messageLabel {
             self.notificationWindow.rootViewController?.view.addSubview(messageLabel)
             self.notificationWindow.rootViewController?.view.bringSubviewToFront(messageLabel)
-          }
-          self.notificationWindow.hidden = false
-          
-          NSNotificationCenter.defaultCenter().addObserver(self, selector: "screenOrientationChanged", name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
-          
-          UIView.animateWithDuration(self.animateInLength, animations: { () -> Void in
+        }
+        self.notificationWindow.hidden = false
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "screenOrientationChanged", name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
+        
+        UIView.animateWithDuration(self.animateInLength, animations: { () -> Void in
             self.animateInFrameChange()
             }, completion: { (finished) -> Void in
-              let delayInSeconds = self.messageLabel.scrollTime
-              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
-                if let completion = completion {
-                  completion()
-                }
-              })
-          })
-        }
+                let delayInSeconds = self.messageLabel.scrollTime
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delayInSeconds * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
+                    if let completion = completion {
+                        completion()
+                    }
+                })
+        })
+        
     }
   
     func showStatusBarNotificationWithMessage(message: String?, forDuration duration: NSTimeInterval) {
@@ -147,24 +145,22 @@ extension StatusBarNotificationCenter {
     }
     
     func showStatusBarNotificationWithView(view: UIView, completion: (Void -> Void)?) {
-        if !self.isShowing {
-          self.isShowing = true
-          
-          self.notificationWindow.hidden = false
-          
-          self.customView = view
-          self.notificationWindow.rootViewController?.view.addSubview(view)
-          self.notificationWindow.rootViewController?.view.bringSubviewToFront(view)
-          self.createSnapshotView()
-          
-          NSNotificationCenter.defaultCenter().addObserver(self, selector: "screenOrientationChanged", name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
-          
-          UIView.animateWithDuration(self.animateInLength, animations: { () -> Void in
+        
+        self.notificationWindow.hidden = false
+        
+        self.customView = view
+        self.notificationWindow.rootViewController?.view.addSubview(view)
+        self.notificationWindow.rootViewController?.view.bringSubviewToFront(view)
+        self.createSnapshotView()
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "screenOrientationChanged", name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
+        
+        UIView.animateWithDuration(self.animateInLength, animations: { () -> Void in
             self.animateInFrameChange()
             }, completion: { (finished) -> Void in
-              completion?()
-          })
-        }
+                completion?()
+        })
+        
     }
   
     func showStatusBarNotificationWithView(view: UIView, forDuration duration: NSTimeInterval) {
@@ -185,8 +181,6 @@ extension StatusBarNotificationCenter {
     }
     
     func dismissNotificationWithCompletion(completion: (() -> Void)?) {
-        if self.isDismissing && self.isShowing { return }
-        self.isDismissing = true
         
         self.middleFrameChange()
         UIView.animateWithDuration(self.animateOutLength, animations: { () -> Void in
@@ -196,9 +190,6 @@ extension StatusBarNotificationCenter {
             self.messageLabel = nil
             self.snapshotView = nil
             self.customView = nil
-            
-            self.isShowing = false
-            self.isDismissing = false
             
             self.notificationLabelConfiguration = nil
             self.notificationCenterConfiguration = nil
