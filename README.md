@@ -42,7 +42,7 @@ Works on iPhone and iPad
 ## Installation
 
 StatusBarNotificationCenter is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile, becasue this is written in Swift 2.0, you may also need to insert `use_frameworks!` in your Podfile:
+it, simply add the following line to your Podfile, because this is written in Swift 2.0, you may also need to insert `use_frameworks!` in your Podfile:
 
 ```ruby
 pod "StatusBarNotificationCenter"
