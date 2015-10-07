@@ -34,9 +34,11 @@ public struct SBNNotificationCenterConfiguration {
     public var statusBarIsHidden: Bool = false
     /// The height of the navigation bar, default to 44.0 points
     public var navigationBarHeight: CGFloat = 44.0
+    /// Should allow the user to interact with the content outside the notification
+    public var userInteractionEnabled = true
   
     /**
-    Initilizer
+    Initializer
     
     - parameter baseWindow: the base window of the notification
     

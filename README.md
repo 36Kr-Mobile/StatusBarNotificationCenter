@@ -10,23 +10,20 @@ You may also want to check this short  [Youtube Video] (https://youtu.be/Qk2vhrB
 
 You can also check this short [Youtube Video] (https://youtu.be/vtMWcWVtxZ8) to learn more about its implementation detail
 
-`StatusBarNotificationCenter` is a library that can be used in your application to show customised status bar notification.
+`StatusBarNotificationCenter` is a library that can be used in your application to show customized status bar notification.
 
 **NOTE:**During out software development, we want to find a library that can show notification from the status bar,  This project learned many thought from  the popular [`CWStatusBarNotification`](https://github.com/cezarywojcik/CWStatusBarNotification)  library, but with much cleaner code implementation(in my own option) and fully written in **Swift 2.0**,  and more extendable, and also it comes with more customisation options, and support multitasking and split view comes with iOS9+ . You can check it if you want to find a custom status bar notification library.
 
-## Key Feature 
+## Key Feature
 1. Support split view of iPad Air and iPad Pro
 2. Support concurrency, with version 1.1.0, you can just test it with the demo application
 3. Highly customizable with a simple architecture, just a main class with a few class methods
-4. Fullly documented
+4. Fully documented
 
-## Coming Features
-1. Let the users interac with the app during the notification is showing
-2. Some small showing bugs
-3. More animation style
+**Now, you can let the users interact with the app during the notification is showing by setting the userInteractionEnabled flag of thee StatusBarNotificationCenter configuration, and you can check the latest commit to say how easy it is to add this functionality**
 
 ## A few words
-This library is just a center class with a window and a view controller, and the center maintains an notification queue, I think our main aim is to build a stable and maintainable architecture, I want to add as many functionality as well, but I really like simple architecture, so there has to be some balance, and I am a programmer just for a few months, so there maybe some thing that maybe not approprite, if you have some advice, please contant me with my email, you can easiy add your custom view to this library, if you have something great to share, please open an issue or submit a pull request, thanks for your support.
+This library is just a center class with a window and a view controller, and the center maintains an notification queue, I think our main aim is to build a stable and maintainable architecture, I want to add as many functionality as well, but I really like simple architecture, so there has to be some balance, and I am a programmer just for a few months, so there maybe some thing that maybe not appropriate, if you have some advice, please contant me with my email, you can easily add your custom view to this library, if you have something great to share, please open an issue or submit a pull request, thanks for your support.
 
 ## Example
 
@@ -58,39 +55,41 @@ Second, you must supply a `SBNNotificationCenterConfiguration` object, the defau
 *    Customize the overall configuration information of the notification, most of the property's default value is OK for most circumstance, but you can customize it if you want
 */
 public struct SBNNotificationCenterConfiguration {
-/// The window below the notification window, you must set this property, or the notification will not work correctly
-var baseWindow: UIWindow
-/// The style of the notification, default to status bar notification
-public var style = StatusBarNotificationCenter.Style.StatusBar
-/// The animation type of the notification, default to overlay
-public var animationType = StatusBarNotificationCenter.AnimationType.Overlay
-/// The animate in direction of the notification, default to top
-public var animateInDirection = StatusBarNotificationCenter.AnimationDirection.Top
-/// The animate out direction of the notification, default to top
-public var animateOutDirection = StatusBarNotificationCenter.AnimationDirection.Top
-/// Whether the user can tap on the notification to dismiss the notification, default to true
-public var dismissible = true
-/// The animate in time of the notification
-public var animateInLength: NSTimeInterval = 0.25
-/// The animate out time of the notification
-public var animateOutLength: NSTimeInterval = 0.25
-/// The height of the notification view, if you want to use a custom height, set the style of the notification to custom, or it will use the status bar and navigation bar height
-public var height: CGFloat = 0
-/// If the status bar is hidden, if it is hidden, the hight of the navigation style notification height is the height of the navigation bar, default to false
-public var statusBarIsHidden: Bool = false
-/// The height of the navigation bar, default to 44.0 points
-public var navigationBarHeight: CGFloat = 44.0
+    /// The window below the notification window, you must set this property, or the notification will not work correctly
+    var baseWindow: UIWindow
+    /// The style of the notification, default to status bar notification
+    public var style = StatusBarNotificationCenter.Style.StatusBar
+    /// The animation type of the notification, default to overlay
+    public var animationType = StatusBarNotificationCenter.AnimationType.Overlay
+    /// The animate in direction of the notification, default to top
+    public var animateInDirection = StatusBarNotificationCenter.AnimationDirection.Top
+    /// The animate out direction of the notification, default to top
+    public var animateOutDirection = StatusBarNotificationCenter.AnimationDirection.Top
+    /// Whether the user can tap on the notification to dismiss the notification, default to true
+    public var dismissible = true
+    /// The animate in time of the notification
+    public var animateInLength: NSTimeInterval = 0.25
+    /// The animate out time of the notification
+    public var animateOutLength: NSTimeInterval = 0.25
+    /// The height of the notification view, if you want to use a custom height, set the style of the notification to custom, or it will use the status bar and navigation bar height
+    public var height: CGFloat = 0
+    /// If the status bar is hidden, if it is hidden, the hight of the navigation style notification height is the height of the navigation bar, default to false
+    public var statusBarIsHidden: Bool = false
+    /// The height of the navigation bar, default to 44.0 points
+    public var navigationBarHeight: CGFloat = 44.0
+    /// Should allow the user to interact with the content outside the notification
+    public var userInteractionEnabled = true
 
-/**
-Initilizer
+    /**
+    Initializer
 
-- parameter baseWindow: the base window of the notification
+    - parameter baseWindow: the base window of the notification
 
-- returns: a default SBNNotificationCenterConfiguration instance
-*/
-public init(baseWindow: UIWindow) {
-self.baseWindow = baseWindow
-}
+    - returns: a default SBNNotificationCenterConfiguration instance
+    */
+    public init(baseWindow: UIWindow) {
+        self.baseWindow = baseWindow
+    }
 }
 ```
 
@@ -112,12 +111,12 @@ and you can supply a completion hander which will be called when the  display co
 if you want to display the notification with the string value, you must also pass a `SBNNotificationLabelConfiguration` object, the default implementation of this object is below:
 ```swift
 /**
-*    If you use the default label to show the notification, you should send a customized configuration struct, the dufault implementation is a nonscrollabel label, with one line to show the information
+*    If you use the default label to show the notification, you should send a customized configuration struct, the dufault implementation is a non-scrollabel label, with one line to show the information
 */
 public struct SBNNotificationLabelConfiguration {
 /// if the label should scroll the content, default to false
 public var scrollabel = true
-/// If you set the scrollabel property to true, you can use this property to customize the scroll delay, default delay is 1 second
+/// If you set the scrollable property to true, you can use this property to customize the scroll delay, default delay is 1 second
 public var scrollDelay: NSTimeInterval = 1.0
 /// If you set the scrollabel property to true, you can use this property to customize the scroll speed, default speed is 40 points per second
 public var scrollSpeed: CGFloat = 40.0
@@ -129,7 +128,7 @@ public var multiline = false
 public var backgroundColor = UIColor.blackColor()
 /// The text color of the notification view, default to white color
 public var textColor = UIColor.whiteColor()
-/// The font of the notification label, defalt to a system font of size 14.0, if you pass the attributed string, this property will be ignored
+/// The font of the notification label, default to a system font of size 14.0, if you pass the attributed string, this property will be ignored
 public var font = UIFont.systemFontOfSize(StatusBarNotificationCenter.defaultMessageLabelFontSize)
 /// this property is not nil, the label will use the attributed string to show the message
 public var attributedText: NSAttributedString? = nil
@@ -159,7 +158,8 @@ And really a big thanks to the work of  [`CWStatusBarNotification`](https://gith
 
 ## Author
 
-Shannon Wu, inatu@icloud.com
+Shannon Wu
+you can contact me by [Email](inatu@icloud.com), or [twitter](https://twitter.com/inatu_) or [Weibo](http://weibo.com/igenuis/profile?rightmod=1&wvr=6&mod=personinfo)
 
 ## License
 

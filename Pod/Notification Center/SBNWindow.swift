@@ -10,6 +10,7 @@ import UIKit
 
 /// The window of the notification center
 class SBNWindow: UIWindow {
+    weak var notificationCenter: StatusBarNotificationCenter!
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -31,5 +32,12 @@ class SBNWindow: UIWindow {
           view.removeFromSuperview()
         }
       }
+    }
+
+    override func hitTest(pt: CGPoint, withEvent event: UIEvent?) -> UIView? {
+        if pt.y > 0 && pt.y < (notificationCenter.internalnotificationViewHeight) {
+                return super.hitTest(pt, withEvent: event)
+        }
+        return nil
     }
 }

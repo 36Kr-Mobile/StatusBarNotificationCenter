@@ -14,6 +14,8 @@ public class StatusBarNotificationCenter: NSObject {
     
     private override init() {
         super.init()
+
+        notificationWindow.notificationCenter = self
     }
     
     /// The single status bar notification center
@@ -195,6 +197,7 @@ public class StatusBarNotificationCenter: NSObject {
     
     //MARK: - Window
     let notificationWindow = SBNWindow(frame: UIScreen.mainScreen().bounds)
+    
     var baseWindow: UIWindow {
         if let notificationCenterConfiguration = notificationCenterConfiguration {
             return notificationCenterConfiguration.baseWindow
@@ -236,4 +239,11 @@ public class StatusBarNotificationCenter: NSObject {
     let notificationQ = dispatch_queue_create("notificationQueue", DISPATCH_QUEUE_SERIAL)
     /// Create a semaphore to show the notification in a one-after one basis
     let notificationSemaphore = dispatch_semaphore_create(1)
+
+
+    //MARK: - User Interaction
+
+    var userInteractionEnabled: Bool {
+        return notificationCenterConfiguration.userInteractionEnabled
+    }
 }
