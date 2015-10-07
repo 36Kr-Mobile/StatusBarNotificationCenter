@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name			= "StatusBarNotificationCenter"
-s.version		= "1.1.0"
+s.version		= "1.1.1"
 s.summary            = "a library that can be used in your application to show customised status bar notification."
 
 s.description		  = <<-DESC
@@ -9,8 +9,9 @@ s.description		  = <<-DESC
 					   1. Support split view in iPad Air and iPad Pro
 					   2. Support Concurrency
 					   3. Highly customizable
-                	   4. Simple architecture
-                       ![screenshot](screenshots/screenshoot.gif)
+             4. Simple architecture
+             **Now, you can let the users interact with the app during the notification is showing by setting the userInteractionEnabled flag of thee StatusBarNotificationCenter configuration, and you can check the latest commit to say how easy it is to add this functionality**
+            ![screenshot](screenshots/screenshoot.gif)
                        DESC
 s.homepage         = "https://github.com/36Kr-Mobile/StatusBarNotificationCenter.git"
 s.license              = 'MIT'
