@@ -36,6 +36,8 @@ public struct SBNNotificationCenterConfiguration {
     public var navigationBarHeight: CGFloat = 44.0
     /// Should allow the user to interact with the content outside the notification
     public var userInteractionEnabled = true
+    /// The window level of the notification window
+    public var level: CGFloat = UIWindowLevelNormal
   
     /**
     Initializer

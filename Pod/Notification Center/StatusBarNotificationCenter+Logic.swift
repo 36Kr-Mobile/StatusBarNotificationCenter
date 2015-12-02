@@ -114,6 +114,7 @@ extension StatusBarNotificationCenter {
         
         self.createMessageLabelWithMessage(message)
         self.createSnapshotView()
+        notificationWindow.windowLevel = notificationCenterConfiguration.level
         
         if let messageLabel = self.messageLabel {
             self.notificationWindow.rootViewController?.view.addSubview(messageLabel)

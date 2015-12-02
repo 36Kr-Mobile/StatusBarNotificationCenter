@@ -18,7 +18,7 @@ class SBNWindow: UIWindow {
         backgroundColor = UIColor.clearColor()
         userInteractionEnabled = true
         hidden = true
-        windowLevel = UIWindowLevelStatusBar
+        windowLevel = UIWindowLevelNormal
         rootViewController = SBNViewController()
     }
 
