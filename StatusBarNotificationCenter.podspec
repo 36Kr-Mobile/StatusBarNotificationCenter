@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name			= "StatusBarNotificationCenter"
-s.version		= "1.1.1"
+s.version		= "1.1.2"
 s.summary            = "a library that can be used in your application to show customised status bar notification."
 
 s.description		  = <<-DESC
