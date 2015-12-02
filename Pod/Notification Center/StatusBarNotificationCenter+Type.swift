@@ -98,9 +98,9 @@ extension StatusBarNotificationCenter {
     */
     struct Notification {
         /// This is the notification center configuration object
-        let notificationCenterConfiguration: SBNNotificationCenterConfiguration
+        let notificationCenterConfiguration: NotificationCenterConfiguration
         /// This the notification label configuration object
-        let notificationLabelConfiguration: SBNNotificationLabelConfiguration?
+        let notificationLabelConfiguration: NotificationLabelConfiguration?
         /// This is the duration of the notification
         let duration: NSTimeInterval?
         /// The view source of the notification
@@ -124,7 +124,7 @@ extension StatusBarNotificationCenter {
 
         - returns: a newly initialtiated notification
         */
-      init(view: UIView?, message: String?, notificationCenterConfiguration: SBNNotificationCenterConfiguration, viewSource: ViewSource, notificationLabelConfiguration:SBNNotificationLabelConfiguration?, duration: NSTimeInterval?, completionHandler: (Void -> Void)?) {
+      init(view: UIView?, message: String?, notificationCenterConfiguration: NotificationCenterConfiguration, viewSource: ViewSource, notificationLabelConfiguration:NotificationLabelConfiguration?, duration: NSTimeInterval?, completionHandler: (Void -> Void)?) {
             self.view = view
             self.message = message
             self.notificationCenterConfiguration = notificationCenterConfiguration

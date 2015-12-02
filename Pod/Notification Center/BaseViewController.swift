@@ -1,5 +1,5 @@
 //
-//  SBNViewController.swift
+//  BaseViewController.swift
 //  StatusBarNotification
 //
 //  Created by Shannon Wu on 9/17/15.
@@ -9,6 +9,6 @@
 import UIKit
 
 /// The view controller object of the notification window
-class SBNViewController: UIViewController {
+class BaseViewController: UIViewController {
 
 }

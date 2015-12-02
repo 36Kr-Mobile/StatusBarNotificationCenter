@@ -1,5 +1,5 @@
 //
-//  SBNWindow.swift
+//  BaseWindow.swift
 //  StatusBarNotification
 //
 //  Created by Shannon Wu on 9/17/15.
@@ -9,7 +9,7 @@
 import UIKit
 
 /// The window of the notification center
-class SBNWindow: UIWindow {
+class BaseWindow: UIWindow {
     weak var notificationCenter: StatusBarNotificationCenter!
 
     override init(frame: CGRect) {
@@ -19,7 +19,7 @@ class SBNWindow: UIWindow {
         userInteractionEnabled = true
         hidden = true
         windowLevel = UIWindowLevelNormal
-        rootViewController = SBNViewController()
+        rootViewController = BaseViewController()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -27,7 +27,7 @@ class SBNWindow: UIWindow {
     }
     
     func resetRootViewController() {
-      if let rootViewController = rootViewController as? SBNViewController {
+      if let rootViewController = rootViewController as? BaseViewController {
         for view in rootViewController.view.subviews {
           view.removeFromSuperview()
         }

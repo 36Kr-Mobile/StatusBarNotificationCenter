@@ -48,13 +48,13 @@ pod "StatusBarNotificationCenter"
 
 First, you need to import the `StatusBarNotificationCenter` framework
 
-Second, you must supply a `SBNNotificationCenterConfiguration` object, the default implementation is below:
+Second, you must supply a `NotificationCenterConfiguration` object, the default implementation is below:
 
 ```swift
 /**
 *    Customize the overall configuration information of the notification, most of the property's default value is OK for most circumstance, but you can customize it if you want
 */
-public struct SBNNotificationCenterConfiguration {
+public struct NotificationCenterConfiguration {
     /// The window below the notification window, you must set this property, or the notification will not work correctly
     var baseWindow: UIWindow
     /// The style of the notification, default to status bar notification
@@ -85,7 +85,7 @@ public struct SBNNotificationCenterConfiguration {
 
     - parameter baseWindow: the base window of the notification
 
-    - returns: a default SBNNotificationCenterConfiguration instance
+    - returns: a default NotificationCenterConfiguration instance
     */
     public init(baseWindow: UIWindow) {
         self.baseWindow = baseWindow
@@ -104,16 +104,16 @@ StatusBarNotificationCenter.showStatusBarNotificationWithView(view, forDuration:
 ```
 this method will display the notification, and last for a time of your specification, and if your configuration object's dismissible property is true, the user can dismiss the notification with a tap on the status bar, if you want to display the notification, and dismiss it manually, you can call the method below instead of this one
 ```swift
-func showStatusBarNotificationWithView(view: UIView, withNotificationCenterConfiguration notificationCenterConfiguration: SBNNotificationCenterConfiguration, whenComplete completionHandler: Void -> Void)
+func showStatusBarNotificationWithView(view: UIView, withNotificationCenterConfiguration notificationCenterConfiguration: NotificationCenterConfiguration, whenComplete completionHandler: Void -> Void)
 ```
 and you can supply a completion hander which will be called when the  display complete, but you must dismiss it yourself, and if your configuration object's dismissible property is true, the user can dismiss the notification with a tap on the status bar
 
-if you want to display the notification with the string value, you must also pass a `SBNNotificationLabelConfiguration` object, the default implementation of this object is below:
+if you want to display the notification with the string value, you must also pass a `NotificationLabelConfiguration` object, the default implementation of this object is below:
 ```swift
 /**
 *    If you use the default label to show the notification, you should send a customized configuration struct, the dufault implementation is a non-scrollabel label, with one line to show the information
 */
-public struct SBNNotificationLabelConfiguration {
+public struct NotificationLabelConfiguration {
 /// if the label should scroll the content, default to false
 public var scrollabel = true
 /// If you set the scrollable property to true, you can use this property to customize the scroll delay, default delay is 1 second
@@ -149,7 +149,7 @@ StatusBarNotificationCenter.showStatusBarNotificationWithMessage(notificationTex
 ```
 and there is also a similar method below, the usage is similar to the notification with a custom view
 ```swift
-func showStatusBarNotificationWithMessage(message: String?, withNotificationCenterConfiguration notificationCenterConfiguration: SBNNotificationCenterConfiguration, andNotificationLabelConfiguration notificationLabelConfiguration: SBNNotificationLabelConfiguration, whenComplete completionHandler: Void -> Void)
+func showStatusBarNotificationWithMessage(message: String?, withNotificationCenterConfiguration notificationCenterConfiguration: NotificationCenterConfiguration, andNotificationLabelConfiguration notificationLabelConfiguration: NotificationLabelConfiguration, whenComplete completionHandler: Void -> Void)
 ```
 ### Additional Remarks
 This library is not yet fully tested, if you find some bugs, please submit an issue; especially, this library is not multi thread tested, though I think with some modification, it will work correctly, if you find, please don't hesitate to tell me, or submit a pull request.

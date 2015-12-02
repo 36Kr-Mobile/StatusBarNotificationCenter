@@ -53,7 +53,7 @@ class ViewController: UIViewController {
     
 
     @IBAction func showNotification(sender: UIButton) {
-        var notificationCenterConfiguration = SBNNotificationCenterConfiguration(baseWindow: view.window!)
+        var notificationCenterConfiguration = NotificationCenterConfiguration(baseWindow: view.window!)
         notificationCenterConfiguration.animateInDirection = StatusBarNotificationCenter.AnimationDirection(rawValue: segFromStyle.selectedSegmentIndex)!
         notificationCenterConfiguration.animateOutDirection = StatusBarNotificationCenter.AnimationDirection(rawValue: segToStyle.selectedSegmentIndex)!
         notificationCenterConfiguration.animationType = StatusBarNotificationCenter.AnimationType(rawValue: segAnimationType.selectedSegmentIndex)!
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
                         let view = nibContents.first as! UIView
                         StatusBarNotificationCenter.showStatusBarNotificationWithView(view, forDuration: NSTimeInterval(self.durationSlider.value), withNotificationCenterConfiguration: notificationCenterConfiguration)
                     } else {
-                        var notificationLabelConfiguration = SBNNotificationLabelConfiguration()
+                        var notificationLabelConfiguration = NotificationLabelConfiguration()
                         notificationLabelConfiguration.font = UIFont.systemFontOfSize(14.0)
                         notificationLabelConfiguration.multiline = self.multiLine.on
                         notificationLabelConfiguration.backgroundColor = self.view.tintColor

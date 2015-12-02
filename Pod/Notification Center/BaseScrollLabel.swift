@@ -1,5 +1,5 @@
 //
-//  SBNScrollLabel.swift
+//  BaseScrollLabel.swift
 //  StatusBarNotification
 //
 //  Created by Shannon Wu on 9/17/15.
@@ -9,7 +9,7 @@
 import UIKit
 
 /// A subclass of UILabel to implement the scrolling trait
-class SBNScrollLabel: UILabel {    
+class BaseScrollLabel: UILabel {    
     //MARK: - Properties
     
     var messageImage = UIImageView()

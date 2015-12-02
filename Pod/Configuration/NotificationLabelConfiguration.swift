@@ -1,5 +1,5 @@
 //
-//  SBNNotificationLabelConfiguration.swift
+//  NotificationLabelConfiguration.swift
 //  StatusBarNotification
 //
 //  Created by Shannon Wu on 9/18/15.
@@ -11,7 +11,7 @@ import Foundation
 /**
 *    If you use the default label to show the notification, you should send a customized configuration struct, the dufault implementation is a nonscrollabel label, with one line to show the information
 */
-public struct SBNNotificationLabelConfiguration {
+public struct NotificationLabelConfiguration {
     /// if the label should scroll the content, default to false
     public var scrollabel = true
     /// If you set the scrollabel property to true, you can use this property to customize the scroll delay, default delay is 1 second

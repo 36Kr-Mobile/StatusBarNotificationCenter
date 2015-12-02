@@ -39,11 +39,11 @@
       <sourceFolder url="file://$MODULE_DIR$/Tests/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Tests.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../LICENSE" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Pod/Configuration/SBNNotificationCenterConfiguration.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Pod/Configuration/SBNNotificationLabelConfiguration.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Pod/Notification Center/SBNScrollLabel.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Pod/Notification Center/SBNViewController.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/../Pod/Notification Center/SBNWindow.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Pod/Configuration/NotificationCenterConfiguration.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Pod/Configuration/NotificationLabelConfiguration.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Pod/Notification Center/BaseScrollLabel.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Pod/Notification Center/BaseViewController.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../Pod/Notification Center/BaseWindow.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Pod/Notification Center/StatusBarNotificationCenter+Logic.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Pod/Notification Center/StatusBarNotificationCenter+Type.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/../Pod/Notification Center/StatusBarNotificationCenter.swift" isTestSource="false" />

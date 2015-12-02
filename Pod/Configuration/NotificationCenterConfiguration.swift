@@ -1,5 +1,5 @@
 //
-//  SBNNotificationCenterConfiguration.swift
+//  NotificationCenterConfiguration.swift
 //  StatusBarNotification
 //
 //  Created by Shannon Wu on 9/18/15.
@@ -11,7 +11,7 @@ import Foundation
 /**
 *    Customize the overall configuration information of the notification, most of the property's default value is OK for most circumstance, but you can customize it if you want
 */
-public struct SBNNotificationCenterConfiguration {
+public struct NotificationCenterConfiguration {
     /// The window below the notification window, you must set this property, or the notification will not work correctly
     var baseWindow: UIWindow
     /// The style of the notification, default to status bar notification
@@ -44,7 +44,7 @@ public struct SBNNotificationCenterConfiguration {
     
     - parameter baseWindow: the base window of the notification
     
-    - returns: a default SBNNotificationCenterConfiguration instance
+    - returns: a default NotificationCenterConfiguration instance
     */
     public init(baseWindow: UIWindow) {
         self.baseWindow = baseWindow

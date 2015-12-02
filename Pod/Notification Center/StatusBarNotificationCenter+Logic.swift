@@ -18,7 +18,7 @@ extension StatusBarNotificationCenter {
     - parameter duration:                        the showing time of the notification
     - parameter notificationCenterConfiguration: the notification configuration
     */
-    public class func showStatusBarNotificationWithView(view: UIView, forDuration duration: NSTimeInterval, withNotificationCenterConfiguration notificationCenterConfiguration: SBNNotificationCenterConfiguration) {
+    public class func showStatusBarNotificationWithView(view: UIView, forDuration duration: NSTimeInterval, withNotificationCenterConfiguration notificationCenterConfiguration: NotificationCenterConfiguration) {
         let notification = Notification(view: view, message:nil, notificationCenterConfiguration: notificationCenterConfiguration, viewSource: .CustomView, notificationLabelConfiguration: nil, duration: duration, completionHandler: nil)
         StatusBarNotificationCenter.center.processNotification(notification)
     }
@@ -30,7 +30,7 @@ extension StatusBarNotificationCenter {
     - parameter notificationCenterConfiguration: the notification configuration
     - parameter completionHandler:               the block to be invoked when the notification is being showed
     */
-    public class func showStatusBarNotificationWithView(view: UIView, withNotificationCenterConfiguration notificationCenterConfiguration: SBNNotificationCenterConfiguration, whenComplete completionHandler: (Void -> Void)? = nil) {
+    public class func showStatusBarNotificationWithView(view: UIView, withNotificationCenterConfiguration notificationCenterConfiguration: NotificationCenterConfiguration, whenComplete completionHandler: (Void -> Void)? = nil) {
         let notification = Notification(view: view, message:nil, notificationCenterConfiguration: notificationCenterConfiguration, viewSource: .CustomView, notificationLabelConfiguration: nil, duration: nil, completionHandler: completionHandler)
         StatusBarNotificationCenter.center.processNotification(notification)
     }
@@ -43,7 +43,7 @@ extension StatusBarNotificationCenter {
     - parameter notificationCenterConfiguration:   the notification configuration
     - parameter andNotificationLabelConfiguration: the label configuration
     */
-    public class func showStatusBarNotificationWithMessage(message: String?, forDuration duration: NSTimeInterval, withNotificationCenterConfiguration notificationCenterConfiguration: SBNNotificationCenterConfiguration, andNotificationLabelConfiguration notificationLabelConfiguration: SBNNotificationLabelConfiguration) {
+    public class func showStatusBarNotificationWithMessage(message: String?, forDuration duration: NSTimeInterval, withNotificationCenterConfiguration notificationCenterConfiguration: NotificationCenterConfiguration, andNotificationLabelConfiguration notificationLabelConfiguration: NotificationLabelConfiguration) {
         let notification = Notification(view: nil, message:message, notificationCenterConfiguration: notificationCenterConfiguration, viewSource: .Label, notificationLabelConfiguration: notificationLabelConfiguration, duration: duration, completionHandler: nil)
         StatusBarNotificationCenter.center.processNotification(notification)
     }
@@ -56,7 +56,7 @@ extension StatusBarNotificationCenter {
     - parameter andNotificationLabelConfiguration: the label configuration
     - parameter completionHandler:               the block to be invoked when the notification is being showed
     */
-    public class func showStatusBarNotificationWithMessage(message: String?, withNotificationCenterConfiguration notificationCenterConfiguration: SBNNotificationCenterConfiguration, andNotificationLabelConfiguration notificationLabelConfiguration: SBNNotificationLabelConfiguration, whenComplete completionHandler: (Void -> Void)? = nil) {
+    public class func showStatusBarNotificationWithMessage(message: String?, withNotificationCenterConfiguration notificationCenterConfiguration: NotificationCenterConfiguration, andNotificationLabelConfiguration notificationLabelConfiguration: NotificationLabelConfiguration, whenComplete completionHandler: (Void -> Void)? = nil) {
         let notification = Notification(view: nil, message:message, notificationCenterConfiguration: notificationCenterConfiguration, viewSource: .Label, notificationLabelConfiguration: notificationLabelConfiguration, duration: nil, completionHandler: completionHandler)
         StatusBarNotificationCenter.center.processNotification(notification)
     }
@@ -290,7 +290,7 @@ extension StatusBarNotificationCenter {
     //MARK: - Helper view creation
     
     func createMessageLabelWithMessage(message: String?) {
-        messageLabel = SBNScrollLabel()
+        messageLabel = BaseScrollLabel()
         messageLabel?.text = message
         messageLabel?.textAlignment = .Center
         messageLabel?.font = messageLabelFont

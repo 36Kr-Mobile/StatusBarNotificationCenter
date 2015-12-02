@@ -30,7 +30,7 @@ public class StatusBarNotificationCenter: NSObject {
     var snapshotView: UIView?
         
     //MARK: Message Label
-    var messageLabel: SBNScrollLabel!
+    var messageLabel: BaseScrollLabel!
     var messageLabelScrollable: Bool {
         if let notificationLabelConfiguration = notificationLabelConfiguration {
             return notificationLabelConfiguration.scrollabel
@@ -196,7 +196,7 @@ public class StatusBarNotificationCenter: NSObject {
     }
     
     //MARK: - Window
-    let notificationWindow = SBNWindow(frame: UIScreen.mainScreen().bounds)
+    let notificationWindow = BaseWindow(frame: UIScreen.mainScreen().bounds)
     
     var baseWindow: UIWindow {
         if let notificationCenterConfiguration = notificationCenterConfiguration {
@@ -207,8 +207,8 @@ public class StatusBarNotificationCenter: NSObject {
     }
     
     //MARK: - Notification
-    var notificationCenterConfiguration: SBNNotificationCenterConfiguration!
-    var notificationLabelConfiguration: SBNNotificationLabelConfiguration!
+    var notificationCenterConfiguration: NotificationCenterConfiguration!
+    var notificationLabelConfiguration: NotificationLabelConfiguration!
 
     var dismissible: Bool {
         if let notificationCenterConfiguration = notificationCenterConfiguration {

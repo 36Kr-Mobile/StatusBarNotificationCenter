@@ -11,11 +11,11 @@
 		38C2258D44FC188056667334644DB648 /* Pods-StatusBarNotificationCenter_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 15F2626343E0754ABC6979A7DC01AB8E /* Pods-StatusBarNotificationCenter_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5D121ADC72F16A9F6A355CD7D6EAB3A6 /* Pods-StatusBarNotificationCenter_Example-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A0C5DEDFC4EC4174C312F5DAD2DAD08 /* Pods-StatusBarNotificationCenter_Example-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5FCAFBBF6DABB793AB88DA8C14EF0B30 /* StatusBarNotificationCenter-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1AC87DC5FABD5B0DD0D8A0288898D697 /* StatusBarNotificationCenter-dummy.m */; };
-		613C45EA1BAC66A90039C735 /* SBNNotificationCenterConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C45E11BAC66A90039C735 /* SBNNotificationCenterConfiguration.swift */; };
-		613C45EB1BAC66A90039C735 /* SBNNotificationLabelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C45E21BAC66A90039C735 /* SBNNotificationLabelConfiguration.swift */; };
-		613C45EC1BAC66A90039C735 /* SBNScrollLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C45E41BAC66A90039C735 /* SBNScrollLabel.swift */; };
-		613C45ED1BAC66A90039C735 /* SBNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C45E51BAC66A90039C735 /* SBNViewController.swift */; };
-		613C45EE1BAC66A90039C735 /* SBNWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C45E61BAC66A90039C735 /* SBNWindow.swift */; };
+		613C45EA1BAC66A90039C735 /* NotificationCenterConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C45E11BAC66A90039C735 /* NotificationCenterConfiguration.swift */; };
+		613C45EB1BAC66A90039C735 /* NotificationLabelConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C45E21BAC66A90039C735 /* NotificationLabelConfiguration.swift */; };
+		613C45EC1BAC66A90039C735 /* BaseScrollLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C45E41BAC66A90039C735 /* BaseScrollLabel.swift */; };
+		613C45ED1BAC66A90039C735 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C45E51BAC66A90039C735 /* BaseViewController.swift */; };
+		613C45EE1BAC66A90039C735 /* BaseWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C45E61BAC66A90039C735 /* BaseWindow.swift */; };
 		613C45EF1BAC66A90039C735 /* StatusBarNotificationCenter+Logic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C45E71BAC66A90039C735 /* StatusBarNotificationCenter+Logic.swift */; };
 		613C45F01BAC66A90039C735 /* StatusBarNotificationCenter+Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C45E81BAC66A90039C735 /* StatusBarNotificationCenter+Type.swift */; };
 		613C45F11BAC66A90039C735 /* StatusBarNotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C45E91BAC66A90039C735 /* StatusBarNotificationCenter.swift */; };
@@ -64,11 +64,11 @@
 		4583D6930E08383479EE7F0C9569778D /* Pods-StatusBarNotificationCenter_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-StatusBarNotificationCenter_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		4805D9C096FF4432BDFE6CE626250ACF /* StatusBarNotificationCenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StatusBarNotificationCenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56806C5B69A4906988883B95A4A7B8AA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS8.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		613C45E11BAC66A90039C735 /* SBNNotificationCenterConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBNNotificationCenterConfiguration.swift; sourceTree = "<group>"; };
-		613C45E21BAC66A90039C735 /* SBNNotificationLabelConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBNNotificationLabelConfiguration.swift; sourceTree = "<group>"; };
-		613C45E41BAC66A90039C735 /* SBNScrollLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBNScrollLabel.swift; sourceTree = "<group>"; };
-		613C45E51BAC66A90039C735 /* SBNViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBNViewController.swift; sourceTree = "<group>"; };
-		613C45E61BAC66A90039C735 /* SBNWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBNWindow.swift; sourceTree = "<group>"; };
+		613C45E11BAC66A90039C735 /* NotificationCenterConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterConfiguration.swift; sourceTree = "<group>"; };
+		613C45E21BAC66A90039C735 /* NotificationLabelConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationLabelConfiguration.swift; sourceTree = "<group>"; };
+		613C45E41BAC66A90039C735 /* BaseScrollLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseScrollLabel.swift; sourceTree = "<group>"; };
+		613C45E51BAC66A90039C735 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		613C45E61BAC66A90039C735 /* BaseWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseWindow.swift; sourceTree = "<group>"; };
 		613C45E71BAC66A90039C735 /* StatusBarNotificationCenter+Logic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StatusBarNotificationCenter+Logic.swift"; sourceTree = "<group>"; };
 		613C45E81BAC66A90039C735 /* StatusBarNotificationCenter+Type.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "StatusBarNotificationCenter+Type.swift"; sourceTree = "<group>"; };
 		613C45E91BAC66A90039C735 /* StatusBarNotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarNotificationCenter.swift; sourceTree = "<group>"; };
@@ -175,8 +175,8 @@
 		613C45E01BAC66A90039C735 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				613C45E11BAC66A90039C735 /* SBNNotificationCenterConfiguration.swift */,
-				613C45E21BAC66A90039C735 /* SBNNotificationLabelConfiguration.swift */,
+				613C45E11BAC66A90039C735 /* NotificationCenterConfiguration.swift */,
+				613C45E21BAC66A90039C735 /* NotificationLabelConfiguration.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -184,9 +184,9 @@
 		613C45E31BAC66A90039C735 /* Notification Center */ = {
 			isa = PBXGroup;
 			children = (
-				613C45E41BAC66A90039C735 /* SBNScrollLabel.swift */,
-				613C45E51BAC66A90039C735 /* SBNViewController.swift */,
-				613C45E61BAC66A90039C735 /* SBNWindow.swift */,
+				613C45E41BAC66A90039C735 /* BaseScrollLabel.swift */,
+				613C45E51BAC66A90039C735 /* BaseViewController.swift */,
+				613C45E61BAC66A90039C735 /* BaseWindow.swift */,
 				613C45E71BAC66A90039C735 /* StatusBarNotificationCenter+Logic.swift */,
 				613C45E81BAC66A90039C735 /* StatusBarNotificationCenter+Type.swift */,
 				613C45E91BAC66A90039C735 /* StatusBarNotificationCenter.swift */,
@@ -429,13 +429,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				613C45ED1BAC66A90039C735 /* SBNViewController.swift in Sources */,
-				613C45EA1BAC66A90039C735 /* SBNNotificationCenterConfiguration.swift in Sources */,
-				613C45EC1BAC66A90039C735 /* SBNScrollLabel.swift in Sources */,
-				613C45EB1BAC66A90039C735 /* SBNNotificationLabelConfiguration.swift in Sources */,
+				613C45ED1BAC66A90039C735 /* BaseViewController.swift in Sources */,
+				613C45EA1BAC66A90039C735 /* NotificationCenterConfiguration.swift in Sources */,
+				613C45EC1BAC66A90039C735 /* BaseScrollLabel.swift in Sources */,
+				613C45EB1BAC66A90039C735 /* NotificationLabelConfiguration.swift in Sources */,
 				5FCAFBBF6DABB793AB88DA8C14EF0B30 /* StatusBarNotificationCenter-dummy.m in Sources */,
 				613C45EF1BAC66A90039C735 /* StatusBarNotificationCenter+Logic.swift in Sources */,
-				613C45EE1BAC66A90039C735 /* SBNWindow.swift in Sources */,
+				613C45EE1BAC66A90039C735 /* BaseWindow.swift in Sources */,
 				613C45F11BAC66A90039C735 /* StatusBarNotificationCenter.swift in Sources */,
 				613C45F01BAC66A90039C735 /* StatusBarNotificationCenter+Type.swift in Sources */,
 			);
