@@ -122,7 +122,7 @@ extension StatusBarNotificationCenter {
         }
         self.notificationWindow.hidden = false
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "screenOrientationChanged", name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StatusBarNotificationCenter.screenOrientationChanged), name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
         
         UIView.animateWithDuration(self.animateInLength, animations: { () -> Void in
             self.animateInFrameChange()
@@ -154,7 +154,7 @@ extension StatusBarNotificationCenter {
         self.notificationWindow.rootViewController?.view.bringSubviewToFront(view)
         self.createSnapshotView()
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "screenOrientationChanged", name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(StatusBarNotificationCenter.screenOrientationChanged), name: UIApplicationDidChangeStatusBarOrientationNotification, object: nil)
         
         UIView.animateWithDuration(self.animateInLength, animations: { () -> Void in
             self.animateInFrameChange()
@@ -311,7 +311,7 @@ extension StatusBarNotificationCenter {
         view?.clipsToBounds = true
         view?.userInteractionEnabled = true
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: "notificationTapped:")
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(StatusBarNotificationCenter.notificationTapped(_:)))
         view?.addGestureRecognizer(tapGesture)
         
         switch animateInDirection {
