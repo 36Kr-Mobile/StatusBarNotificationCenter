@@ -15,19 +15,19 @@ public struct NotificationCenterConfiguration {
     /// The window below the notification window, you must set this property, or the notification will not work correctly
     var baseWindow: UIWindow
     /// The style of the notification, default to status bar notification
-    public var style = StatusBarNotificationCenter.Style.StatusBar
+    public var style = StatusBarNotificationCenter.Style.statusBar
     /// The animation type of the notification, default to overlay
-    public var animationType = StatusBarNotificationCenter.AnimationType.Overlay
+    public var animationType = StatusBarNotificationCenter.AnimationType.overlay
     /// The animate in direction of the notification, default to top
-    public var animateInDirection = StatusBarNotificationCenter.AnimationDirection.Top
+    public var animateInDirection = StatusBarNotificationCenter.AnimationDirection.top
     /// The animate out direction of the notification, default to top
-    public var animateOutDirection = StatusBarNotificationCenter.AnimationDirection.Top
+    public var animateOutDirection = StatusBarNotificationCenter.AnimationDirection.top
     /// Whether the user can tap on the notification to dismiss the notification, default to true
     public var dismissible = true
     /// The animate in time of the notification
-    public var animateInLength: NSTimeInterval = 0.25
+    public var animateInLength: TimeInterval = 0.25
     /// The animate out time of the notification
-    public var animateOutLength: NSTimeInterval = 0.25
+    public var animateOutLength: TimeInterval = 0.25
     /// The height of the notification view, if you want to use a custom height, set the style of the notification to custom, or it will use the status bar and navigation bar height
     public var height: CGFloat = 0
     /// If the status bar is hidden, if it is hidden, the hight of the navigation style notification height is the height of the navigation bar, default to false

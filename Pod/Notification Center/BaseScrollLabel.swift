@@ -15,46 +15,46 @@ class BaseScrollLabel: UILabel {
     var messageImage = UIImageView()
     var scrollable: Bool = true
     var scrollSpeed: CGFloat = 40.0
-    var scrollDelay: NSTimeInterval = 1.0
+    var scrollDelay: TimeInterval = 1.0
     var padding: CGFloat = 10.0
     
     var fullWidth: CGFloat {
         guard let message = text else { return 0 }
-        return (message as NSString).sizeWithAttributes([NSFontAttributeName : font]).width
+        return (message as NSString).size(attributes: [NSFontAttributeName : font]).width
     }
     
     var scrollOffset: CGFloat {
         if (numberOfLines != 1) || !scrollable { return 0 }
-        let insetRect = CGRectInset(bounds, padding, 0)
-        return max(0, fullWidth - CGRectGetWidth(insetRect))
+        let insetRect = bounds.insetBy(dx: padding, dy: 0)
+        return max(0, fullWidth - insetRect.width)
     }
     
-    var scrollTime: NSTimeInterval {
-        return (scrollOffset > 0) ? NSTimeInterval(scrollOffset / scrollSpeed) + scrollDelay : 0
+    var scrollTime: TimeInterval {
+        return (scrollOffset > 0) ? TimeInterval(scrollOffset / scrollSpeed) + scrollDelay : 0
     }
     
-    override func drawTextInRect(rect: CGRect) {
+    override func drawText(in rect: CGRect) {
         var rect = rect
         if scrollOffset > 0 {
             rect.size.width = fullWidth + padding * 2
             
-            UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.mainScreen().scale)
-            super.drawTextInRect(rect)
+            UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.main.scale)
+            super.drawText(in: rect)
             messageImage.image = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
             
             messageImage.sizeToFit()
             addSubview(messageImage)
             
-            UIView.animateWithDuration(scrollTime - scrollDelay, delay: scrollDelay, options: [.BeginFromCurrentState, .CurveEaseInOut], animations: { () -> Void in
-                self.messageImage.transform = CGAffineTransformMakeTranslation(-self.scrollOffset, 0)
+            UIView.animate(withDuration: scrollTime - scrollDelay, delay: scrollDelay, options: .beginFromCurrentState, animations: { () -> Void in
+                self.messageImage.transform = CGAffineTransform(translationX: -self.scrollOffset, y: 0)
             }, completion: { (finished) -> Void in
                 //
             })
             
         } else {
             messageImage.removeFromSuperview()
-            super.drawTextInRect(CGRectInset(rect, padding, padding))
+            super.drawText(in: rect.insetBy(dx: padding, dy: padding))
         }
     }
 }

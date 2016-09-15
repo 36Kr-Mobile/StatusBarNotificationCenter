@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var heightSlider: UISlider!
 
-    let notificationQ = dispatch_queue_create("ViewControllerNotificationQ", DISPATCH_QUEUE_CONCURRENT)
+    let notificationQ = DispatchQueue(label: "ViewControllerNotificationQ", attributes: DispatchQueue.Attributes.concurrent)
     
     var notificationCenter: StatusBarNotificationCenter!
 
@@ -36,46 +36,46 @@ class ViewController: UIViewController {
         notificationTextField.text = "Hello, Programmer"
     }
     
-    @IBAction func durationValueChanged(sender: UISlider) {
+    @IBAction func durationValueChanged(_ sender: UISlider) {
         let labelText = "\(sender.value) seconds"
         durationLabel.text = labelText
     }
     
-    @IBAction func heightValueChanged(sender: UISlider) {
+    @IBAction func heightValueChanged(_ sender: UISlider) {
         let labelText = sender.value == 0 ? "Standard Height" : "\(sender.value) of the screen height"
         heightLabel.text = labelText
     }
 
-    @IBAction func notificationNumberChanged(sender: UISlider) {
+    @IBAction func notificationNumberChanged(_ sender: UISlider) {
         let labelText = "\(Int(concurrentNotificationNumberSlider.value))"
         concurrentNotificationNumberLabel.text = labelText
     }
     
 
-    @IBAction func showNotification(sender: UIButton) {
+    @IBAction func showNotification(_ sender: UIButton) {
         var notificationCenterConfiguration = NotificationCenterConfiguration(baseWindow: view.window!)
         notificationCenterConfiguration.animateInDirection = StatusBarNotificationCenter.AnimationDirection(rawValue: segFromStyle.selectedSegmentIndex)!
         notificationCenterConfiguration.animateOutDirection = StatusBarNotificationCenter.AnimationDirection(rawValue: segToStyle.selectedSegmentIndex)!
         notificationCenterConfiguration.animationType = StatusBarNotificationCenter.AnimationType(rawValue: segAnimationType.selectedSegmentIndex)!
         notificationCenterConfiguration.style = StatusBarNotificationCenter.Style(rawValue: segNotificationType.selectedSegmentIndex)!
-        notificationCenterConfiguration.height = (UIScreen.mainScreen().bounds.height * CGFloat(heightSlider.value))
+        notificationCenterConfiguration.height = (UIScreen.main.bounds.height * CGFloat(heightSlider.value))
         notificationCenterConfiguration.animateInLength = 0.25
         notificationCenterConfiguration.animateOutLength = 0.75
         notificationCenterConfiguration.style = StatusBarNotificationCenter.Style(rawValue: segNotificationType.selectedSegmentIndex)!
-        dispatch_async(notificationQ) { () -> Void in
+        notificationQ.async { () -> Void in
             for i in 1...Int(self.concurrentNotificationNumberSlider.value) {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(Double(i) * drand48() * Double(NSEC_PER_SEC))), dispatch_get_main_queue(), { () -> Void in
-                    if self.isCustomView.on {
-                        let nibContents = NSBundle.mainBundle().loadNibNamed("NotificationView", owner: self, options: nil)
-                        let view = nibContents.first as! UIView
-                        StatusBarNotificationCenter.showStatusBarNotificationWithView(view, forDuration: NSTimeInterval(self.durationSlider.value), withNotificationCenterConfiguration: notificationCenterConfiguration)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(Double(i) * drand48() * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: { () -> Void in
+                    if self.isCustomView.isOn {
+                        let nibContents = Bundle.main.loadNibNamed("NotificationView", owner: self, options: nil)
+                        let view = nibContents?.first as! UIView
+                        StatusBarNotificationCenter.showStatusBarNotificationWithView(view, forDuration: TimeInterval(self.durationSlider.value), withNotificationCenterConfiguration: notificationCenterConfiguration)
                     } else {
                         var notificationLabelConfiguration = NotificationLabelConfiguration()
-                        notificationLabelConfiguration.font = UIFont.systemFontOfSize(14.0)
-                        notificationLabelConfiguration.multiline = self.multiLine.on
+                        notificationLabelConfiguration.font = UIFont.systemFont(ofSize: 14.0)
+                        notificationLabelConfiguration.multiline = self.multiLine.isOn
                         notificationLabelConfiguration.backgroundColor = self.view.tintColor
-                        notificationLabelConfiguration.textColor = UIColor.blackColor()
-                        StatusBarNotificationCenter.showStatusBarNotificationWithMessage(self.notificationTextField.text! + "\(i)", forDuration: NSTimeInterval(self.durationSlider.value), withNotificationCenterConfiguration: notificationCenterConfiguration, andNotificationLabelConfiguration: notificationLabelConfiguration)
+                        notificationLabelConfiguration.textColor = UIColor.black
+                        StatusBarNotificationCenter.showStatusBarNotificationWithMessage(self.notificationTextField.text! + "\(i)", forDuration: TimeInterval(self.durationSlider.value), withNotificationCenterConfiguration: notificationCenterConfiguration, andNotificationLabelConfiguration: notificationLabelConfiguration)
                     }
                     
                 })

@@ -15,9 +15,9 @@ class BaseWindow: UIWindow {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = UIColor.clearColor()
-        userInteractionEnabled = true
-        hidden = true
+        backgroundColor = UIColor.clear
+        isUserInteractionEnabled = true
+        isHidden = true
         windowLevel = UIWindowLevelNormal
         rootViewController = BaseViewController()
     }
@@ -34,9 +34,9 @@ class BaseWindow: UIWindow {
       }
     }
 
-    override func hitTest(pt: CGPoint, withEvent event: UIEvent?) -> UIView? {
+    override func hitTest(_ pt: CGPoint, with event: UIEvent?) -> UIView? {
         if pt.y > 0 && pt.y < (notificationCenter.internalnotificationViewHeight) {
-                return super.hitTest(pt, withEvent: event)
+                return super.hitTest(pt, with: event)
         }
         return nil
     }

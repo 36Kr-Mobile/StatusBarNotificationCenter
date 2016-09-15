@@ -21,15 +21,15 @@ extension StatusBarNotificationCenter {
         /**
         *  Covers the statusbar portion of the screen, if the status bar is hidden, cover the status bar height of the screen
         */
-        case StatusBar
+        case statusBar
         /**
         *  Covers the status bar and navigation bar portion of the screen
         */
-        case NavigationBar
+        case navigationBar
         /**
         *  Cover part of the screen, based on the height of the configuration
         */
-        case Custom
+        case custom
     }
     
     /**
@@ -44,19 +44,19 @@ extension StatusBarNotificationCenter {
         /**
         *  Animate in from the top or animate out to the top
         */
-        case Top
+        case top
         /**
         *  Animate in from the bottom or animate out to the bottom
         */
-        case Bottom
+        case bottom
         /**
         *  Animate in from the left or animate out to the left
         */
-        case Left
+        case left
         /**
         *  Animate in from the right or animate out to the right
         */
-        case Right
+        case right
     }
     
     /**
@@ -69,11 +69,11 @@ extension StatusBarNotificationCenter {
         /**
         *  Moves existing content out of the way
         */
-        case Replace
+        case replace
         /**
         *  Ovelays existing content
         */
-        case Overlay
+        case overlay
     }
     
     /**
@@ -86,11 +86,11 @@ extension StatusBarNotificationCenter {
         /**
         *    Use a custom view to show the notification
         */
-        case CustomView
+        case customView
         /**
         *    Use the default label to show the notification
         */
-        case Label
+        case label
     }
     
     /**
@@ -102,13 +102,13 @@ extension StatusBarNotificationCenter {
         /// This the notification label configuration object
         let notificationLabelConfiguration: NotificationLabelConfiguration?
         /// This is the duration of the notification
-        let duration: NSTimeInterval?
+        let duration: TimeInterval?
         /// The view source of the notification
         let viewSource: ViewSource
         /// The view of the notification, if the view  source is a custom view
         let view: UIView!
         /// The completion handler to be called when the show process is done
-        let completionHandler: (Void -> Void)?
+        let completionHandler: ((Void) -> Void)?
         /// The message of the notification, if the view  source is a label
         let message: String!
 
@@ -124,7 +124,7 @@ extension StatusBarNotificationCenter {
 
         - returns: a newly initialtiated notification
         */
-      init(view: UIView?, message: String?, notificationCenterConfiguration: NotificationCenterConfiguration, viewSource: ViewSource, notificationLabelConfiguration:NotificationLabelConfiguration?, duration: NSTimeInterval?, completionHandler: (Void -> Void)?) {
+      init(view: UIView?, message: String?, notificationCenterConfiguration: NotificationCenterConfiguration, viewSource: ViewSource, notificationLabelConfiguration:NotificationLabelConfiguration?, duration: TimeInterval?, completionHandler: ((Void) -> Void)?) {
             self.view = view
             self.message = message
             self.notificationCenterConfiguration = notificationCenterConfiguration
