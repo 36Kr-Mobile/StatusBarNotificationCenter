@@ -9,10 +9,10 @@
 import UIKit
 
 /// This is the base class of the notification center object, mainly to define properties
-public class StatusBarNotificationCenter: NSObject {
+open class StatusBarNotificationCenter: NSObject {
     //MARK: - Initializers
     
-    private override init() {
+    fileprivate override init() {
         super.init()
 
         notificationWindow.notificationCenter = self
@@ -73,7 +73,7 @@ public class StatusBarNotificationCenter: NSObject {
             fatalError("Cannot reach this branch")
         }
     }
-    var messageLabelScrollDelay: NSTimeInterval {
+    var messageLabelScrollDelay: TimeInterval {
         if let notificationLabelConfiguration = notificationLabelConfiguration {
             return notificationLabelConfiguration.scrollDelay
         } else {
@@ -111,37 +111,37 @@ public class StatusBarNotificationCenter: NSObject {
     }
     var internalnotificationViewHeight: CGFloat {
         switch notificationStyle {
-        case .StatusBar:
+        case .statusBar:
             return statusBarHeight
-        case .NavigationBar:
+        case .navigationBar:
             if statusBarIsHidden {
                 return navigationBarHeight
             } else {
                 return statusBarHeight + navigationBarHeight
             }
-        case .Custom:
+        case .custom:
             return notificationViewHeight
         }
     }
 
     var notificationViewFrame: CGRect {
-        return CGRectMake(0, 0, notificationViewWidth, internalnotificationViewHeight)
+        return CGRect(x: 0, y: 0, width: notificationViewWidth, height: internalnotificationViewHeight)
     }
     var notificationViewTopFrame: CGRect {
-        return CGRectMake(0, -internalnotificationViewHeight, notificationViewWidth, internalnotificationViewHeight)
+        return CGRect(x: 0, y: -internalnotificationViewHeight, width: notificationViewWidth, height: internalnotificationViewHeight)
     }
     var notificationViewLeftFrame: CGRect {
-        return CGRectMake(-notificationViewWidth, 0, notificationViewWidth, internalnotificationViewHeight)
+        return CGRect(x: -notificationViewWidth, y: 0, width: notificationViewWidth, height: internalnotificationViewHeight)
     }
     var notificationViewRightFrame: CGRect {
-        return CGRectMake(notificationViewWidth, 0, notificationViewWidth, internalnotificationViewHeight)
+        return CGRect(x: notificationViewWidth, y: 0, width: notificationViewWidth, height: internalnotificationViewHeight)
     }
     var notificationViewBottomFrame: CGRect {
-        return CGRectMake(0, internalnotificationViewHeight, notificationViewWidth, 0)
+        return CGRect(x: 0, y: internalnotificationViewHeight, width: notificationViewWidth, height: 0)
     }
         
     //MARK: Custom View
-    var viewSource: ViewSource = .Label
+    var viewSource: ViewSource = .label
     var customView: UIView? {
         didSet {
             if customView != nil {
@@ -196,7 +196,7 @@ public class StatusBarNotificationCenter: NSObject {
     }
     
     //MARK: - Window
-    let notificationWindow = BaseWindow(frame: UIScreen.mainScreen().bounds)
+    let notificationWindow = BaseWindow(frame: UIScreen.main.bounds)
     
     var baseWindow: UIWindow {
         if let notificationCenterConfiguration = notificationCenterConfiguration {
@@ -217,14 +217,14 @@ public class StatusBarNotificationCenter: NSObject {
             return false
         }
     }
-    var animateInLength: NSTimeInterval {
+    var animateInLength: TimeInterval {
         if let notificationCenterConfiguration = notificationCenterConfiguration {
             return notificationCenterConfiguration.animateInLength
         } else {
             fatalError("Cannot reach this branch")
         }
     }
-    var animateOutLength: NSTimeInterval {
+    var animateOutLength: TimeInterval {
         if let notificationCenterConfiguration = notificationCenterConfiguration {
             return notificationCenterConfiguration.animateOutLength
         } else {
@@ -236,9 +236,9 @@ public class StatusBarNotificationCenter: NSObject {
     /// A notification array
     var notifications = [Notification]()
     /// Create a notification Queue to track the notifications
-    let notificationQ = dispatch_queue_create("notificationQueue", DISPATCH_QUEUE_SERIAL)
+    let notificationQ = DispatchQueue(label: "notificationQueue", attributes: [])
     /// Create a semaphore to show the notification in a one-after one basis
-    let notificationSemaphore = dispatch_semaphore_create(1)
+    let notificationSemaphore = DispatchSemaphore(value: 1)
 
 
     //MARK: - User Interaction
