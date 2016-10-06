@@ -110,7 +110,7 @@ extension StatusBarNotificationCenter {
         }
     }
   
-    func showStatusBarNotificationWithMessage(_ message: String?,completion: (() -> Void)?) {
+    func showStatusBarNotificationWithMessage(_ message: String?, completion: (() -> Void)?) {
         
         self.createMessageLabelWithMessage(message)
         self.createSnapshotView()
@@ -127,8 +127,8 @@ extension StatusBarNotificationCenter {
         UIView.animate(withDuration: self.animateInLength, animations: { () -> Void in
             self.animateInFrameChange()
             }, completion: { (finished) -> Void in
-                let delayInSeconds = self.messageLabel.scrollTime
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(delayInSeconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: { () -> Void in
+                let delayInSeconds = lround(self.messageLabel.scrollTime)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(delayInSeconds), execute: { () -> Void in
                     if let completion = completion {
                         completion()
                     }
@@ -139,7 +139,7 @@ extension StatusBarNotificationCenter {
   
     func showStatusBarNotificationWithMessage(_ message: String?, forDuration duration: TimeInterval) {
         self.showStatusBarNotificationWithMessage(message) { () -> Void in
-          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(Double(duration) * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: { () -> Void in
+          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(lround(duration)), execute: { () -> Void in
             self.dismissNotification()
           })
         }
@@ -166,7 +166,7 @@ extension StatusBarNotificationCenter {
   
     func showStatusBarNotificationWithView(_ view: UIView, forDuration duration: TimeInterval) {
         self.showStatusBarNotificationWithView(view) { () -> Void in
-          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(Double(duration) * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: { () -> Void in
+          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(lround(duration)), execute: { () -> Void in
             self.dismissNotification()
           })
         }
