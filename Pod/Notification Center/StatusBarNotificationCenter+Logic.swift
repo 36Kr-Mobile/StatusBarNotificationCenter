@@ -311,19 +311,21 @@ extension StatusBarNotificationCenter {
     func setupNotificationView(_ view: UIView?) {
         view?.clipsToBounds = true
         view?.isUserInteractionEnabled = true
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(StatusBarNotificationCenter.notificationTapped(_:)))
-        view?.addGestureRecognizer(tapGesture)
-        
+		
+		if self.dismissible {
+			let tapGesture = UITapGestureRecognizer(target: self, action: #selector(StatusBarNotificationCenter.notificationTapped(_:)))
+			view?.addGestureRecognizer(tapGesture)
+		}
+		
         switch animateInDirection {
-        case .top:
-            view?.frame = notificationViewTopFrame
-        case .left:
-            view?.frame = notificationViewLeftFrame
-        case .right:
-            view?.frame = notificationViewRightFrame
-        case .bottom:
-            view?.frame = notificationViewBottomFrame
+			case .top:
+				view?.frame = notificationViewTopFrame
+			case .left:
+				view?.frame = notificationViewLeftFrame
+			case .right:
+				view?.frame = notificationViewRightFrame
+			case .bottom:
+				view?.frame = notificationViewBottomFrame
         }
     }
 
