@@ -182,7 +182,8 @@ extension StatusBarNotificationCenter {
     }
     
     func dismissNotificationWithCompletion(_ completion: (() -> Void)?) {
-        
+        guard notificationCenterConfiguration != nil else { return }
+		
         self.middleFrameChange()
         UIView.animate(withDuration: self.animateOutLength, animations: { () -> Void in
           self.animateOutFrameChange()
