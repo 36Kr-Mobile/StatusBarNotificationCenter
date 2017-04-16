@@ -31,7 +31,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 This example is best run with an iPad air or iPad Pro in portrait mode, and you can test the split view
 
-##Requirements
+## Requirements
 Because the demonstration code is written with UIStackView, so you need Xcode 7.0+ and iOS 9.0+ to run the demo, But I think this library can be used with devices with system version 7.0+, because the API is rather basic, and you can modify the source code with little effort to accompany with your minimum deployment target.
 
 Works on iPhone and iPad
@@ -44,7 +44,7 @@ it, simply add the following line to your Podfile, because this is written in Sw
 ```ruby
 pod "StatusBarNotificationCenter"
 ```
-##Usage
+## Usage
 
 First, you need to import the `StatusBarNotificationCenter` framework
 
