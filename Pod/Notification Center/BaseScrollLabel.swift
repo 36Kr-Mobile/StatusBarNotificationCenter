@@ -46,7 +46,7 @@ class BaseScrollLabel: UILabel {
             messageImage.sizeToFit()
             addSubview(messageImage)
             
-            UIView.animate(withDuration: scrollTime - scrollDelay, delay: scrollDelay, options: .beginFromCurrentState, animations: { () -> Void in
+            UIView.animate(withDuration: scrollTime - scrollDelay, delay: scrollDelay, options: [.beginFromCurrentState, .curveEaseInOut], animations: { () -> Void in
                 self.messageImage.transform = CGAffineTransform(translationX: -self.scrollOffset, y: 0)
             }, completion: { (finished) -> Void in
                 //
