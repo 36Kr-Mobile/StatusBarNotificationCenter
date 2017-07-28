@@ -37,7 +37,7 @@ public struct NotificationCenterConfiguration {
     /// Should allow the user to interact with the content outside the notification
     public var userInteractionEnabled = true
     /// The window level of the notification window
-    public var level: CGFloat = UIWindowLevelNormal
+    public var level: CGFloat = UIWindowLevelStatusBar
   
     /**
     Initializer
