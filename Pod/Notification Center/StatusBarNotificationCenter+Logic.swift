@@ -77,7 +77,7 @@ extension StatusBarNotificationCenter {
     This is the hub of all notifications, just use a semaphore to manage the showing process
     */
     func showNotification() {
-        if (self.notificationSemaphore.wait(timeout: DispatchTime.distantFuture) == .success) {
+        if ((self.notificationSemaphore).wait(timeout: DispatchTime(uptimeNanoseconds: DispatchTime.distantFuture.uptimeNanoseconds)) == .success) {
             DispatchQueue.main.sync(execute: { () -> Void in
               if self.notifications.count > 0 {
                 let currentNotification = self.notifications.removeFirst()
@@ -110,7 +110,7 @@ extension StatusBarNotificationCenter {
         }
     }
   
-    func showStatusBarNotificationWithMessage(_ message: String?, completion: (() -> Void)?) {
+    func showStatusBarNotificationWithMessage(_ message: String?,completion: (() -> Void)?) {
         
         self.createMessageLabelWithMessage(message)
         self.createSnapshotView()
@@ -127,19 +127,18 @@ extension StatusBarNotificationCenter {
         UIView.animate(withDuration: self.animateInLength, animations: { () -> Void in
             self.animateInFrameChange()
             }, completion: { (finished) -> Void in
-                let delayInSeconds = lround(self.messageLabel.scrollTime)
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(delayInSeconds), execute: { () -> Void in
+                let delayInSeconds = self.messageLabel.scrollTime
+                DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds * Double(NSEC_PER_SEC), execute: {
                     if let completion = completion {
                         completion()
                     }
                 })
-        })
-        
+            })
     }
   
     func showStatusBarNotificationWithMessage(_ message: String?, forDuration duration: TimeInterval) {
         self.showStatusBarNotificationWithMessage(message) { () -> Void in
-          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(lround(duration)), execute: { () -> Void in
+          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(Double(duration) * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: { () -> Void in
             self.dismissNotification()
           })
         }
@@ -166,7 +165,7 @@ extension StatusBarNotificationCenter {
   
     func showStatusBarNotificationWithView(_ view: UIView, forDuration duration: TimeInterval) {
         self.showStatusBarNotificationWithView(view) { () -> Void in
-          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(lround(duration)), execute: { () -> Void in
+          DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(Double(duration) * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: { () -> Void in
             self.dismissNotification()
           })
         }
@@ -182,8 +181,7 @@ extension StatusBarNotificationCenter {
     }
     
     func dismissNotificationWithCompletion(_ completion: (() -> Void)?) {
-        guard notificationCenterConfiguration != nil else { return }
-		
+        
         self.middleFrameChange()
         UIView.animate(withDuration: self.animateOutLength, animations: { () -> Void in
           self.animateOutFrameChange()
@@ -311,21 +309,19 @@ extension StatusBarNotificationCenter {
     func setupNotificationView(_ view: UIView?) {
         view?.clipsToBounds = true
         view?.isUserInteractionEnabled = true
-		
-		if self.dismissible {
-			let tapGesture = UITapGestureRecognizer(target: self, action: #selector(StatusBarNotificationCenter.notificationTapped(_:)))
-			view?.addGestureRecognizer(tapGesture)
-		}
-		
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(StatusBarNotificationCenter.notificationTapped(_:)))
+        view?.addGestureRecognizer(tapGesture)
+        
         switch animateInDirection {
-			case .top:
-				view?.frame = notificationViewTopFrame
-			case .left:
-				view?.frame = notificationViewLeftFrame
-			case .right:
-				view?.frame = notificationViewRightFrame
-			case .bottom:
-				view?.frame = notificationViewBottomFrame
+        case .top:
+            view?.frame = notificationViewTopFrame
+        case .left:
+            view?.frame = notificationViewLeftFrame
+        case .right:
+            view?.frame = notificationViewRightFrame
+        case .bottom:
+            view?.frame = notificationViewBottomFrame
         }
     }
 
