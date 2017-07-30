@@ -30,7 +30,7 @@ public struct NotificationCenterConfiguration {
     public var animateOutLength: TimeInterval = 0.25
     /// The height of the notification view, if you want to use a custom height, set the style of the notification to custom, or it will use the status bar and navigation bar height
     public var height: CGFloat = 20
-    /// If the status bar is hidden, if it is hidden, the hight of the navigation style notification height is the height of the navigation bar, default to false
+    /// If the status bar is hidden, the hight of the navigation style notification height is the height of the navigation bar, default to false
     public var statusBarIsHidden: Bool = false
     /// The height of the navigation bar, default to 44.0 points
     public var navigationBarHeight: CGFloat = 44.0
