@@ -78,9 +78,10 @@ extension StatusBarNotificationCenter {
     */
     func showNotification() {
         if ((self.notificationSemaphore).wait(timeout: DispatchTime(uptimeNanoseconds: DispatchTime.distantFuture.uptimeNanoseconds)) == .success) {
-            DispatchQueue.main.sync(execute: { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
               if self.notifications.count > 0 {
                 let currentNotification = self.notifications.removeFirst()
+                self.displayedNotification = currentNotification
                 
                 self.notificationCenterConfiguration = currentNotification.notificationCenterConfiguration
                 self.notificationLabelConfiguration = currentNotification.notificationLabelConfiguration
@@ -128,7 +129,7 @@ extension StatusBarNotificationCenter {
             self.animateInFrameChange()
             }, completion: { (finished) -> Void in
                 let delayInSeconds = self.messageLabel.scrollTime
-                DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds * Double(NSEC_PER_SEC), execute: {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + delayInSeconds * Double(NSEC_PER_SEC), execute: {
                     if let completion = completion {
                         completion()
                     }
@@ -181,6 +182,15 @@ extension StatusBarNotificationCenter {
     }
     
     func dismissNotificationWithCompletion(_ completion: (() -> Void)?) {
+        
+        guard self.displayedNotification != nil else {
+            if let completion = completion {
+                completion()
+            }
+            return
+        }
+        
+        self.displayedNotification = nil
         
         self.middleFrameChange()
         UIView.animate(withDuration: self.animateOutLength, animations: { () -> Void in
