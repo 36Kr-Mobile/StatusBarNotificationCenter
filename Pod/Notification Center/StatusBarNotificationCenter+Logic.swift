@@ -77,7 +77,7 @@ extension StatusBarNotificationCenter {
     This is the hub of all notifications, just use a semaphore to manage the showing process
     */
     func showNotification() {
-        if ((self.notificationSemaphore).wait(timeout: DispatchTime(uptimeNanoseconds: DispatchTime.distantFuture.uptimeNanoseconds)) == .success) {
+        if ((self.notificationSemaphore).wait(timeout: DispatchTime.distantFuture) == .success) {            
             DispatchQueue.main.async(execute: { () -> Void in
               if self.notifications.count > 0 {
                 let currentNotification = self.notifications.removeFirst()
