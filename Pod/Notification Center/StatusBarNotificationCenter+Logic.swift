@@ -145,7 +145,7 @@ extension StatusBarNotificationCenter {
         }
     }
     
-    func showStatusBarNotificationWithView(_ view: UIView, completion: ((Void) -> Void)?) {
+    func showStatusBarNotificationWithView(_ view: UIView, completion: (() -> Void)?) {
         
         self.notificationWindow.isHidden = false
         
@@ -223,11 +223,11 @@ extension StatusBarNotificationCenter {
     
     //MARK: - Handle Change
     
-    func notificationTapped(_ tapGesture: UITapGestureRecognizer) {
+    @objc func notificationTapped(_ tapGesture: UITapGestureRecognizer) {
         dismissNotification()
     }
     
-    func screenOrientationChanged() {
+    @objc func screenOrientationChanged() {
         switch viewSource {
         case .label:
             messageLabel?.frame = notificationViewFrame
