@@ -20,7 +20,7 @@ class BaseScrollLabel: UILabel {
     
     var fullWidth: CGFloat {
         guard let message = text else { return 0 }
-        return (message as NSString).size(attributes: [NSFontAttributeName : font]).width
+        return (message as NSString).size(withAttributes: [NSAttributedStringKey.font : font]).width
     }
     
     var scrollOffset: CGFloat {
