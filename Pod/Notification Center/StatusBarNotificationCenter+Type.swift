@@ -108,7 +108,7 @@ extension StatusBarNotificationCenter {
         /// The view of the notification, if the view  source is a custom view
         let view: UIView!
         /// The completion handler to be called when the show process is done
-        let completionHandler: ((Void) -> Void)?
+        let completionHandler: (() -> Void)?
         /// The message of the notification, if the view  source is a label
         let message: String!
 
@@ -124,7 +124,7 @@ extension StatusBarNotificationCenter {
 
         - returns: a newly initialtiated notification
         */
-      init(view: UIView?, message: String?, notificationCenterConfiguration: NotificationCenterConfiguration, viewSource: ViewSource, notificationLabelConfiguration:NotificationLabelConfiguration?, duration: TimeInterval?, completionHandler: ((Void) -> Void)?) {
+        init(view: UIView?, message: String?, notificationCenterConfiguration: NotificationCenterConfiguration, viewSource: ViewSource, notificationLabelConfiguration:NotificationLabelConfiguration?, duration: TimeInterval?, completionHandler: (() -> Void)?) {
             self.view = view
             self.message = message
             self.notificationCenterConfiguration = notificationCenterConfiguration
