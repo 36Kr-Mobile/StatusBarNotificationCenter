@@ -30,7 +30,7 @@ extension StatusBarNotificationCenter {
     - parameter notificationCenterConfiguration: the notification configuration
     - parameter completionHandler:               the block to be invoked when the notification is being showed
     */
-    public class func showStatusBarNotificationWithView(_ view: UIView, withNotificationCenterConfiguration notificationCenterConfiguration: NotificationCenterConfiguration, whenComplete completionHandler: ((Void) -> Void)? = nil) {
+    public class func showStatusBarNotificationWithView(_ view: UIView, withNotificationCenterConfiguration notificationCenterConfiguration: NotificationCenterConfiguration, whenComplete completionHandler: (() -> ())? = nil) {
         let notification = Notification(view: view, message:nil, notificationCenterConfiguration: notificationCenterConfiguration, viewSource: .customView, notificationLabelConfiguration: nil, duration: nil, completionHandler: completionHandler)
         StatusBarNotificationCenter.center.processNotification(notification)
     }
