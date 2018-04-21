@@ -12,7 +12,7 @@ You can also check this short [Youtube Video] (https://youtu.be/vtMWcWVtxZ8) to 
 
 `StatusBarNotificationCenter` is a library that can be used in your application to show customized status bar notification.
 
-**NOTE:**During out software development, we want to find a library that can show notification from the status bar,  This project learned many thought from  the popular [`CWStatusBarNotification`](https://github.com/cezarywojcik/CWStatusBarNotification)  library, but with much cleaner code implementation(in my own option) and fully written in **Swift 2.0**,  and more extendable, and also it comes with more customisation options, and support multitasking and split view comes with iOS9+ . You can check it if you want to find a custom status bar notification library.
+**NOTE:**During out software development, we want to find a library that can show notification from the status bar,  This project learned many thought from  the popular [`CWStatusBarNotification`](https://github.com/cezarywojcik/CWStatusBarNotification)  library, but with much cleaner code implementation(in my own option) and fully written in **Swift 3.1**,  and more extendable, and also it comes with more customisation options, and support multitasking and split view comes with iOS9+ . You can check it if you want to find a custom status bar notification library.
 
 ## Key Feature
 1. Support split view of iPad Air and iPad Pro
@@ -39,7 +39,7 @@ Works on iPhone and iPad
 ## Installation
 
 StatusBarNotificationCenter is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile, because this is written in Swift 2.0, you may also need to insert `use_frameworks!` in your Podfile:
+it, simply add the following line to your Podfile, because this is written in Swift 3.1, you may also need to insert `use_frameworks!` in your Podfile:
 
 ```ruby
 pod "StatusBarNotificationCenter"
@@ -58,19 +58,19 @@ public struct NotificationCenterConfiguration {
     /// The window below the notification window, you must set this property, or the notification will not work correctly
     var baseWindow: UIWindow
     /// The style of the notification, default to status bar notification
-    public var style = StatusBarNotificationCenter.Style.StatusBar
+    public var style = StatusBarNotificationCenter.Style.statusBar
     /// The animation type of the notification, default to overlay
-    public var animationType = StatusBarNotificationCenter.AnimationType.Overlay
+    public var animationType = StatusBarNotificationCenter.AnimationType.overlay
     /// The animate in direction of the notification, default to top
-    public var animateInDirection = StatusBarNotificationCenter.AnimationDirection.Top
+    public var animateInDirection = StatusBarNotificationCenter.AnimationDirection.top
     /// The animate out direction of the notification, default to top
-    public var animateOutDirection = StatusBarNotificationCenter.AnimationDirection.Top
+    public var animateOutDirection = StatusBarNotificationCenter.AnimationDirection.top
     /// Whether the user can tap on the notification to dismiss the notification, default to true
     public var dismissible = true
     /// The animate in time of the notification
-    public var animateInLength: NSTimeInterval = 0.25
+    public var animateInLength: TimeInterval = 0.25
     /// The animate out time of the notification
-    public var animateOutLength: NSTimeInterval = 0.25
+    public var animateOutLength: TimeInterval = 0.25
     /// The height of the notification view, if you want to use a custom height, set the style of the notification to custom, or it will use the status bar and navigation bar height
     public var height: CGFloat = 0
     /// If the status bar is hidden, if it is hidden, the hight of the navigation style notification height is the height of the navigation bar, default to false
@@ -79,12 +79,14 @@ public struct NotificationCenterConfiguration {
     public var navigationBarHeight: CGFloat = 44.0
     /// Should allow the user to interact with the content outside the notification
     public var userInteractionEnabled = true
-
+    /// The window level of the notification window
+    public var level: CGFloat = UIWindowLevelNormal
+  
     /**
     Initializer
-
+    
     - parameter baseWindow: the base window of the notification
-
+    
     - returns: a default NotificationCenterConfiguration instance
     */
     public init(baseWindow: UIWindow) {
@@ -111,36 +113,36 @@ and you can supply a completion hander which will be called when the  display co
 if you want to display the notification with the string value, you must also pass a `NotificationLabelConfiguration` object, the default implementation of this object is below:
 ```swift
 /**
-*    If you use the default label to show the notification, you should send a customized configuration struct, the dufault implementation is a non-scrollabel label, with one line to show the information
+*    If you use the default label to show the notification, you should send a customized configuration struct, the dufault implementation is a nonscrollabel label, with one line to show the information
 */
 public struct NotificationLabelConfiguration {
-/// if the label should scroll the content, default to false
-public var scrollabel = true
-/// If you set the scrollable property to true, you can use this property to customize the scroll delay, default delay is 1 second
-public var scrollDelay: NSTimeInterval = 1.0
-/// If you set the scrollabel property to true, you can use this property to customize the scroll speed, default speed is 40 points per second
-public var scrollSpeed: CGFloat = 40.0
-/// Set the padding of the message label, default to 10.0 points
-public var padding: CGFloat = 10.0
-/// if the label should be multiline implementation, default to false
-public var multiline = false
-/// The background color of the notification view, default to black color
-public var backgroundColor = UIColor.blackColor()
-/// The text color of the notification view, default to white color
-public var textColor = UIColor.whiteColor()
-/// The font of the notification label, default to a system font of size 14.0, if you pass the attributed string, this property will be ignored
-public var font = UIFont.systemFontOfSize(StatusBarNotificationCenter.defaultMessageLabelFontSize)
-/// this property is not nil, the label will use the attributed string to show the message
-public var attributedText: NSAttributedString? = nil
-
-/**
-Init a new default notification label configuration
-
-- returns: a new default notification label configuration
-*/
-public init() {
-
-}
+    /// if the label should scroll the content, default to false
+    public var scrollabel = true
+    /// If you set the scrollabel property to true, you can use this property to customize the scroll delay, default delay is 1 second
+    public var scrollDelay: TimeInterval = 1.0
+    /// If you set the scrollabel property to true, you can use this property to customize the scroll speed, default speed is 40 points per second
+    public var scrollSpeed: CGFloat = 40.0
+    /// Set the padding of the message label, default to 10.0 points
+    public var padding: CGFloat = 10.0
+    /// if the label should be multiline implementation, default to false
+    public var multiline = false
+    /// The background color of the notification view, default to black color
+    public var backgroundColor = UIColor.black
+    /// The text color of the notification view, default to white color
+    public var textColor = UIColor.white
+    /// The font of the notification label, defalt to a system font of size 14.0, if you pass the attributed string, this property will be ignored
+    public var font = UIFont.systemFont(ofSize: StatusBarNotificationCenter.defaultMessageLabelFontSize)
+    /// this property is not nil, the label will use the attributed string to show the message
+    public var attributedText: NSAttributedString? = nil
+    
+    /**
+    Init a new default notification label configuration
+    
+    - returns: a new default notification label configuration
+    */
+    public init() {
+        
+    }
 }
 ```
 The configuration is rather obvious, you can call the following method to invoke the notification
