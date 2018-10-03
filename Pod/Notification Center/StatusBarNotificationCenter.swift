@@ -233,8 +233,10 @@ open class StatusBarNotificationCenter: NSObject {
     }
     
     //MARK: - Notification Queue Management
-    /// A notification array
+    /// A notification queue
     var notifications = [Notification]()
+    /// Currently displayed notification
+    var displayedNotification: Notification?
     /// Create a notification Queue to track the notifications
     let notificationQ = DispatchQueue(label: "notificationQueue", attributes: [])
     /// Create a semaphore to show the notification in a one-after one basis
