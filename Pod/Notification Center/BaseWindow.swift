@@ -18,7 +18,7 @@ class BaseWindow: UIWindow {
         backgroundColor = UIColor.clear
         isUserInteractionEnabled = true
         isHidden = true
-        windowLevel = UIWindowLevelNormal
+        windowLevel = UIWindow.Level.normal
         rootViewController = BaseViewController()
     }
 
