@@ -20,7 +20,7 @@ class BaseScrollLabel: UILabel {
     
     var fullWidth: CGFloat {
         guard let message = text else { return 0 }
-        return (message as NSString).size(attributes: [NSFontAttributeName : font]).width
+        return (message as NSString).size(withAttributes: [NSAttributedString.Key.font : font]).width
     }
     
     var scrollOffset: CGFloat {
@@ -46,7 +46,7 @@ class BaseScrollLabel: UILabel {
             messageImage.sizeToFit()
             addSubview(messageImage)
             
-            UIView.animate(withDuration: scrollTime - scrollDelay, delay: scrollDelay, options: .beginFromCurrentState, animations: { () -> Void in
+            UIView.animate(withDuration: scrollTime - scrollDelay, delay: scrollDelay, options: [.beginFromCurrentState, .curveEaseIn, .curveEaseOut], animations: { () -> Void in
                 self.messageImage.transform = CGAffineTransform(translationX: -self.scrollOffset, y: 0)
             }, completion: { (finished) -> Void in
                 //

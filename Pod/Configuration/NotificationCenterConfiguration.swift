@@ -15,13 +15,13 @@ public struct NotificationCenterConfiguration {
     /// The window below the notification window, you must set this property, or the notification will not work correctly
     var baseWindow: UIWindow
     /// The style of the notification, default to status bar notification
-    public var style = StatusBarNotificationCenter.Style.statusBar
+    public var style = StatusBarNotificationCenter.Style.StatusBar
     /// The animation type of the notification, default to overlay
-    public var animationType = StatusBarNotificationCenter.AnimationType.overlay
+    public var animationType = StatusBarNotificationCenter.AnimationType.Overlay
     /// The animate in direction of the notification, default to top
-    public var animateInDirection = StatusBarNotificationCenter.AnimationDirection.top
+    public var animateInDirection = StatusBarNotificationCenter.AnimationDirection.Top
     /// The animate out direction of the notification, default to top
-    public var animateOutDirection = StatusBarNotificationCenter.AnimationDirection.top
+    public var animateOutDirection = StatusBarNotificationCenter.AnimationDirection.Top
     /// Whether the user can tap on the notification to dismiss the notification, default to true
     public var dismissible = true
     /// The animate in time of the notification
@@ -37,7 +37,7 @@ public struct NotificationCenterConfiguration {
     /// Should allow the user to interact with the content outside the notification
     public var userInteractionEnabled = true
     /// The window level of the notification window
-    public var level: CGFloat = UIWindowLevelNormal
+    public var level: CGFloat = UIWindow.Level.normal.rawValue
   
     /**
     Initializer
