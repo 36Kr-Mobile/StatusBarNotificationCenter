@@ -9,10 +9,11 @@
 import UIKit
 
 /// This is the base class of the notification center object, mainly to define properties
-open class StatusBarNotificationCenter: NSObject {
+public class StatusBarNotificationCenter: NSObject {
+    
     //MARK: - Initializers
     
-    fileprivate override init() {
+    private override init() {
         super.init()
 
         notificationWindow.notificationCenter = self
@@ -111,41 +112,41 @@ open class StatusBarNotificationCenter: NSObject {
     }
     var internalnotificationViewHeight: CGFloat {
         switch notificationStyle {
-        case .statusBar:
+        case .StatusBar:
             return statusBarHeight
-        case .navigationBar:
+        case .NavigationBar:
             if statusBarIsHidden {
                 return navigationBarHeight
             } else {
                 return statusBarHeight + navigationBarHeight
             }
-        case .custom:
+        case .Custom:
             return notificationViewHeight
         }
     }
 
     var notificationViewFrame: CGRect {
-        return CGRect(x: 0, y: 0, width: notificationViewWidth, height: internalnotificationViewHeight)
+        return CGRect(x:0, y:0, width:notificationViewWidth, height:internalnotificationViewHeight)
     }
     var notificationViewTopFrame: CGRect {
-        return CGRect(x: 0, y: -internalnotificationViewHeight, width: notificationViewWidth, height: internalnotificationViewHeight)
+        return CGRect(x:0, y:-internalnotificationViewHeight, width:notificationViewWidth, height:internalnotificationViewHeight)
     }
     var notificationViewLeftFrame: CGRect {
-        return CGRect(x: -notificationViewWidth, y: 0, width: notificationViewWidth, height: internalnotificationViewHeight)
+        return CGRect(x:-notificationViewWidth, y:0, width:notificationViewWidth, height:internalnotificationViewHeight)
     }
     var notificationViewRightFrame: CGRect {
-        return CGRect(x: notificationViewWidth, y: 0, width: notificationViewWidth, height: internalnotificationViewHeight)
+        return CGRect(x:notificationViewWidth, y:0, width:notificationViewWidth, height:internalnotificationViewHeight)
     }
     var notificationViewBottomFrame: CGRect {
-        return CGRect(x: 0, y: internalnotificationViewHeight, width: notificationViewWidth, height: 0)
+        return CGRect(x:0, y:internalnotificationViewHeight, width:notificationViewWidth, height:0)
     }
         
     //MARK: Custom View
-    var viewSource: ViewSource = .label
+    var viewSource: ViewSource = .Label
     var customView: UIView? {
         didSet {
             if customView != nil {
-                setupNotificationView(customView)
+                setupNotificationView(view: customView)
             }
         }
     }
@@ -236,7 +237,7 @@ open class StatusBarNotificationCenter: NSObject {
     /// A notification array
     var notifications = [Notification]()
     /// Create a notification Queue to track the notifications
-    let notificationQ = DispatchQueue(label: "notificationQueue", attributes: [])
+    let notificationQ = DispatchQueue(label: "notificationQueue")//DispatchQueue( label:"notificationQueue",attributes: [])
     /// Create a semaphore to show the notification in a one-after one basis
     let notificationSemaphore = DispatchSemaphore(value: 1)
 
